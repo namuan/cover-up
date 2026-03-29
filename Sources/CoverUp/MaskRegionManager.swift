@@ -1,0 +1,44 @@
+import Foundation
+import Combine
+
+/// Single source of truth for all mask regions.
+/// Observers receive updates via the `regionsPublisher`.
+final class MaskRegionManager {
+
+    // MARK: - Published state
+
+    private let regionsSubject = CurrentValueSubject<[MaskRegion], Never>([])
+
+    /// Subscribe here to be notified whenever the region list changes.
+    var regionsPublisher: AnyPublisher<[MaskRegion], Never> {
+        regionsSubject.eraseToAnyPublisher()
+    }
+
+    /// Current snapshot of all regions.
+    var regions: [MaskRegion] { regionsSubject.value }
+
+    // MARK: - Mutations
+
+    /// Append a new region. No-op if a region with the same `id` already exists.
+    func addRegion(_ region: MaskRegion) {
+        guard !regionsSubject.value.contains(where: { $0.id == region.id }) else { return }
+        regionsSubject.value.append(region)
+    }
+
+    /// Remove the region with the given id. No-op if not found.
+    func removeRegion(id: String) {
+        regionsSubject.value.removeAll { $0.id == id }
+    }
+
+    /// Flip `isActive` for the region with the given id. No-op if not found.
+    func toggleRegion(id: String) {
+        guard let index = regionsSubject.value.firstIndex(where: { $0.id == id }) else { return }
+        regionsSubject.value[index].isActive.toggle()
+    }
+
+    /// Update `relativeRect` for the given id (used by WindowTracker).
+    func updateRect(id: String, rect: CGRect) {
+        guard let index = regionsSubject.value.firstIndex(where: { $0.id == id }) else { return }
+        regionsSubject.value[index].relativeRect = rect
+    }
+}
