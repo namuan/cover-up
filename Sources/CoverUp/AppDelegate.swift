@@ -30,6 +30,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     @objc private func onboardingDidComplete() {
         NotificationCenter.default.removeObserver(self, name: .onboardingDidComplete, object: nil)
+        // Return to accessory (no Dock icon) mode now that onboarding is done.
+        onboardingWindowController?.restoreAccessoryPolicy()
         startCoreComponents()
     }
 
