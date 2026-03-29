@@ -6,21 +6,27 @@
 - [x] Task-002: Overlay Window — OverlayWindow, OverlayView, unit tests (commit: TBD)
 - [x] Task-003: MaskRegion model and manager (commit: d76edcc)
 - [x] Task-004: Window Tracker (commit: b879bdb)
-- [x] Task-005: Rendering Engine — OverlayView draws regions, wired with MaskRegionManager, off-screen tests (commit: TBD)
+- [x] Task-006: HotkeyHandler, StatusMenuController, RegionListController (commit: 1f29ed8)
 
 ---
 
 ## Current Iteration
 
-- **Iteration:** 6
-- **Working on:** Task-006 (next)
+- **Iteration:** 7
+- **Working on:** Task-007 (next)
 - **Started:** 2026-03-29
 
 ---
 
 ## Last Completed
 
-- **Task-005-fix:** useBlur guard + test
+- **Task-006:** HotkeyHandler, StatusMenuController, RegionListController
+- **Tests:** 34/34 passing (+6 HotkeyHandlerTests)
+- **Key decisions:**
+  - `HotkeyHandler.handleKeyEvent(flags:keyCode:)` is public for direct test invocation (no monitor needed in tests)
+  - `HotkeyHandlerDelegate` protocol decouples dispatch from UI
+  - `StatusMenuController` owns the status bar item and NSPanel control panel; stored strongly in AppDelegate
+  - `RegionListController` uses NSStackView programmatically with Combine subscription for live updates
 - **Tests:** 28/28 passing (+1 testUseBlurRegionNotDrawnAsBlack)
 - **Key decisions:**
   - `OverlayView.draw()` now skips regions where `useBlur == true` (Phase 1: no blur implemented)
