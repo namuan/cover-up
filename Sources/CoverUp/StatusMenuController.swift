@@ -33,11 +33,40 @@ final class StatusMenuController: NSObject {
         statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
         statusItem?.button?.title = "◼"
         statusItem?.button?.toolTip = "CoverUp"
+
         let menu = NSMenu()
-        menu.addItem(NSMenuItem(title: "Show Control Panel", action: #selector(showControlPanel), keyEquivalent: ""))
+
+        let panelItem = NSMenuItem(title: "Show Control Panel", action: #selector(showControlPanel), keyEquivalent: "")
+        panelItem.target = self
+        menu.addItem(panelItem)
+
+        menu.addItem(NSMenuItem.separator())
+
+        let toggleItem = NSMenuItem(title: "Toggle Overlay", action: nil, keyEquivalent: "")
+        toggleItem.keyEquivalentModifierMask = []
+        toggleItem.isEnabled = false
+        toggleItem.attributedTitle = NSAttributedString(
+            string: "Toggle Overlay          ⌘⇧H",
+            attributes: [.font: NSFont.menuFont(ofSize: 0)])
+        menu.addItem(toggleItem)
+
+        let addItem = NSMenuItem(title: "Add Region", action: nil, keyEquivalent: "")
+        addItem.isEnabled = false
+        addItem.attributedTitle = NSAttributedString(
+            string: "Add Static Region     ⌘⇧A",
+            attributes: [.font: NSFont.menuFont(ofSize: 0)])
+        menu.addItem(addItem)
+
+        let removeItem = NSMenuItem(title: "Remove Region", action: nil, keyEquivalent: "")
+        removeItem.isEnabled = false
+        removeItem.attributedTitle = NSAttributedString(
+            string: "Remove Last Region  ⌘⇧D",
+            attributes: [.font: NSFont.menuFont(ofSize: 0)])
+        menu.addItem(removeItem)
+
         menu.addItem(NSMenuItem.separator())
         menu.addItem(NSMenuItem(title: "Quit CoverUp", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
-        menu.items.first?.target = self
+
         statusItem?.menu = menu
     }
 

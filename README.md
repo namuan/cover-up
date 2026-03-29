@@ -23,6 +23,16 @@ xcodebuild -scheme CoverUp -destination 'platform=macOS' build
 xcodebuild test -scheme CoverUp -destination 'platform=macOS'
 ```
 
+## Keyboard Shortcuts
+
+| Shortcut | Action |
+|---|---|
+| `⌘⇧H` | Toggle overlay visibility (show / hide all regions) |
+| `⌘⇧A` | Add a new static region at the centre of the screen |
+| `⌘⇧D` | Remove the most recently added region |
+
+Shortcuts work system-wide once Accessibility permission is granted.
+
 ## Permissions Required
 
 ### Screen Recording
