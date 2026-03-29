@@ -7,6 +7,7 @@
 - [x] Task-003: MaskRegion model and manager (commit: d76edcc)
 - [x] Task-004: Window Tracker (commit: b879bdb)
 - [x] Task-006: HotkeyHandler, StatusMenuController, RegionListController (commit: 1f29ed8)
+- [x] Task-006-fix: Add LSUIElement=true to Info.plist (commit: TBD)
 
 ---
 
