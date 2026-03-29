@@ -2,8 +2,10 @@ import AppKit
 
 @main
 class AppDelegate: NSObject, NSApplicationDelegate {
+    private var overlayWindow: OverlayWindow?
+
     func applicationDidFinishLaunching(_ notification: Notification) {
-        // Entry point — components wired in later tasks
+        overlayWindow = OverlayWindow()
     }
 
     func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {

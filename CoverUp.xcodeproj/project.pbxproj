@@ -9,7 +9,10 @@
 /* Begin PBXBuildFile section */
 		07BE7B168B462B1A7CAE1CEA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD9D91A3C7767266E604A16 /* AppDelegate.swift */; };
 		20066BF57DECE4F58BD469DE /* CoverUpTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C3D9136015AF20E2C7E98CB /* CoverUpTests.swift */; };
+		3721E43E389FD2A3FF6F51F6 /* OverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C15FC8242CE5643EBAD1BB /* OverlayView.swift */; };
 		B6E888210B123760E670E081 /* CoverUpUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B009CC62BAC12F94797C6D8 /* CoverUpUITests.swift */; };
+		D0E8F168C2AE6E4CB7132820 /* OverlayWindowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14E98E22794061D4ACF3DC9 /* OverlayWindowTests.swift */; };
+		E9AC9CA12BE1C5326313FBA2 /* OverlayWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF3196902ECE6ECEA391FD3 /* OverlayWindow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,6 +33,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		06C15FC8242CE5643EBAD1BB /* OverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayView.swift; sourceTree = "<group>"; };
 		328EB9FAC0F2EDAE70D27729 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		6C3D9136015AF20E2C7E98CB /* CoverUpTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverUpTests.swift; sourceTree = "<group>"; };
 		8DD9D91A3C7767266E604A16 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -37,7 +41,9 @@
 		9E88379ABCCC736FD5667A13 /* CoverUpUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoverUpUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9FAB2CBD4E973A91144591C /* CoverUpTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoverUpTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C508800A187020D4ACA5A910 /* CoverUp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CoverUp.entitlements; sourceTree = "<group>"; };
+		E14E98E22794061D4ACF3DC9 /* OverlayWindowTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayWindowTests.swift; sourceTree = "<group>"; };
 		E40C058FFCF307838807829F /* CoverUp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoverUp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FCF3196902ECE6ECEA391FD3 /* OverlayWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayWindow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -55,6 +61,7 @@
 			isa = PBXGroup;
 			children = (
 				6C3D9136015AF20E2C7E98CB /* CoverUpTests.swift */,
+				E14E98E22794061D4ACF3DC9 /* OverlayWindowTests.swift */,
 			);
 			name = CoverUpTests;
 			path = Tests/CoverUpTests;
@@ -85,6 +92,8 @@
 				8DD9D91A3C7767266E604A16 /* AppDelegate.swift */,
 				C508800A187020D4ACA5A910 /* CoverUp.entitlements */,
 				328EB9FAC0F2EDAE70D27729 /* Info.plist */,
+				06C15FC8242CE5643EBAD1BB /* OverlayView.swift */,
+				FCF3196902ECE6ECEA391FD3 /* OverlayWindow.swift */,
 			);
 			name = CoverUp;
 			path = Sources/CoverUp;
@@ -195,6 +204,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				07BE7B168B462B1A7CAE1CEA /* AppDelegate.swift in Sources */,
+				3721E43E389FD2A3FF6F51F6 /* OverlayView.swift in Sources */,
+				E9AC9CA12BE1C5326313FBA2 /* OverlayWindow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -203,6 +214,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				20066BF57DECE4F58BD469DE /* CoverUpTests.swift in Sources */,
+				D0E8F168C2AE6E4CB7132820 /* OverlayWindowTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -226,6 +238,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_REQUIRED = NO;
 				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
@@ -364,6 +377,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_REQUIRED = NO;
 				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;

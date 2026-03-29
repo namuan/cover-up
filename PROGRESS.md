@@ -3,27 +3,27 @@
 ## Completed
 
 - [x] Task-001: Xcode project setup (commit: c7b041b)
+- [x] Task-002: Overlay Window — OverlayWindow, OverlayView, unit tests (commit: TBD)
 
 ---
 
 ## Current Iteration
 
-- **Iteration:** 2
-- **Working on:** —
-- **Started:** —
+- **Iteration:** 3
+- **Working on:** Task-003 (next)
+- **Started:** 2026-03-29
 
 ---
 
 ## Last Completed
 
-- **Task-001:** Xcode project setup
-- **Tests:** N/A (placeholder tests in place)
+- **Task-002:** Overlay Window
+- **Tests:** 6/6 passing (OverlayWindowTests)
 - **Key decisions:**
-  - Used xcodegen (project.yml) to generate CoverUp.xcodeproj
-  - `@main` on AppDelegate — no main.swift needed (they conflict)
-  - Sandbox disabled (`com.apple.security.app-sandbox = false`) for CGWindowListCopyWindowInfo
-  - LSUIElement=YES so app runs as menu bar agent (no Dock icon)
-  - Code signing disabled (CODE_SIGN_IDENTITY="", CODE_SIGNING_REQUIRED=NO)
+  - OverlayWindow uses `.screenSaver` level, click-through (`ignoresMouseEvents`), borderless, clear background
+  - Frame computed as union of all NSScreen.screens frames
+  - AppDelegate stores `overlayWindow` as private var (strong reference)
+  - Fixed CoverUpUITests code signing: added `CODE_SIGNING_ALLOWED: "NO"` to project.yml
 
 ---
 
