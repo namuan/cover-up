@@ -3,37 +3,42 @@ import AppKit
 /// A transparent, always-on-top, click-through window that spans all screens.
 class OverlayWindow: NSWindow {
 
+    private(set) var overlayViewInstance: OverlayView?
+
+    convenience init(manager: MaskRegionManager? = nil) {
+        let frame = NSScreen.screens.reduce(NSRect.zero) { $0.union($1.frame) }
+        self.init(contentRect: frame, styleMask: .borderless, backing: .buffered, defer: false)
+        overlayView?.manager = manager
+    }
+
     override init(
         contentRect: NSRect,
         styleMask style: NSWindow.StyleMask,
         backing backingStoreType: NSWindow.BackingStoreType,
         defer flag: Bool
     ) {
-        // Compute union frame of all screens
         let frame = NSScreen.screens.reduce(NSRect.zero) { $0.union($1.frame) }
         super.init(contentRect: frame, styleMask: .borderless, backing: .buffered, defer: false)
         configure()
     }
 
     private func configure() {
-        // Transparent background
         backgroundColor = .clear
         isOpaque = false
         hasShadow = false
-        // Always on top — above screen savers too
         level = .screenSaver
-        // Click-through
         ignoresMouseEvents = true
-        // Keep on top even when app is inactive
         collectionBehavior = [.canJoinAllSpaces, .stationary, .fullScreenAuxiliary]
-        // Content view
-        let overlayView = OverlayView(frame: self.frame)
-        contentView = overlayView
-        // Show immediately
+
+        let frame = NSScreen.screens.reduce(NSRect.zero) { $0.union($1.frame) }
+        let view = OverlayView(frame: frame)
+        contentView = view
+        overlayViewInstance = view
+
         orderFrontRegardless()
     }
 
-    /// Convenience: the typed content view.
+    /// Convenience typed accessor.
     var overlayView: OverlayView? {
         return contentView as? OverlayView
     }
