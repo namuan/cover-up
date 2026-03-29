@@ -1,0 +1,508 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		07BE7B168B462B1A7CAE1CEA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD9D91A3C7767266E604A16 /* AppDelegate.swift */; };
+		20066BF57DECE4F58BD469DE /* CoverUpTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C3D9136015AF20E2C7E98CB /* CoverUpTests.swift */; };
+		B6E888210B123760E670E081 /* CoverUpUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B009CC62BAC12F94797C6D8 /* CoverUpUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		712C5A8F8E30A577EAEB509A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 26BADE79788A9DB13C35A957 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1B63E065E2D7EF07AC33E7D9;
+			remoteInfo = CoverUp;
+		};
+		996F5DAD3690479962C60A34 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 26BADE79788A9DB13C35A957 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1B63E065E2D7EF07AC33E7D9;
+			remoteInfo = CoverUp;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		328EB9FAC0F2EDAE70D27729 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		6C3D9136015AF20E2C7E98CB /* CoverUpTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverUpTests.swift; sourceTree = "<group>"; };
+		8DD9D91A3C7767266E604A16 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		9B009CC62BAC12F94797C6D8 /* CoverUpUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverUpUITests.swift; sourceTree = "<group>"; };
+		9E88379ABCCC736FD5667A13 /* CoverUpUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoverUpUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A9FAB2CBD4E973A91144591C /* CoverUpTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoverUpTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C508800A187020D4ACA5A910 /* CoverUp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CoverUp.entitlements; sourceTree = "<group>"; };
+		E40C058FFCF307838807829F /* CoverUp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoverUp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		46E5032092540C3645D70929 = {
+			isa = PBXGroup;
+			children = (
+				F9FEC77F09C67A29BD6D105C /* CoverUp */,
+				578DC64350D1DDA9F333F983 /* CoverUpTests */,
+				A0F9203387E6AEA16E2C9457 /* CoverUpUITests */,
+				99D9B0BDA6E732A6381257D4 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		578DC64350D1DDA9F333F983 /* CoverUpTests */ = {
+			isa = PBXGroup;
+			children = (
+				6C3D9136015AF20E2C7E98CB /* CoverUpTests.swift */,
+			);
+			name = CoverUpTests;
+			path = Tests/CoverUpTests;
+			sourceTree = "<group>";
+		};
+		99D9B0BDA6E732A6381257D4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E40C058FFCF307838807829F /* CoverUp.app */,
+				A9FAB2CBD4E973A91144591C /* CoverUpTests.xctest */,
+				9E88379ABCCC736FD5667A13 /* CoverUpUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A0F9203387E6AEA16E2C9457 /* CoverUpUITests */ = {
+			isa = PBXGroup;
+			children = (
+				9B009CC62BAC12F94797C6D8 /* CoverUpUITests.swift */,
+			);
+			name = CoverUpUITests;
+			path = Tests/CoverUpUITests;
+			sourceTree = "<group>";
+		};
+		F9FEC77F09C67A29BD6D105C /* CoverUp */ = {
+			isa = PBXGroup;
+			children = (
+				8DD9D91A3C7767266E604A16 /* AppDelegate.swift */,
+				C508800A187020D4ACA5A910 /* CoverUp.entitlements */,
+				328EB9FAC0F2EDAE70D27729 /* Info.plist */,
+			);
+			name = CoverUp;
+			path = Sources/CoverUp;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1B63E065E2D7EF07AC33E7D9 /* CoverUp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F27E357D3AFE353ED581FF75 /* Build configuration list for PBXNativeTarget "CoverUp" */;
+			buildPhases = (
+				29DE26B0EAFF55E75265FDD9 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CoverUp;
+			packageProductDependencies = (
+			);
+			productName = CoverUp;
+			productReference = E40C058FFCF307838807829F /* CoverUp.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A3FFDFD197E869F91FF9AEE4 /* CoverUpTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A3309C93171CD611F0E76B20 /* Build configuration list for PBXNativeTarget "CoverUpTests" */;
+			buildPhases = (
+				8E2E01D2DDB281BC6DDBAB9F /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F9DF99AC78C4E4D4B179F4AE /* PBXTargetDependency */,
+			);
+			name = CoverUpTests;
+			packageProductDependencies = (
+			);
+			productName = CoverUpTests;
+			productReference = A9FAB2CBD4E973A91144591C /* CoverUpTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		CBFB2CA98E1FBB6986EEE92B /* CoverUpUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 72DF1F8D13E7614DD7896F5D /* Build configuration list for PBXNativeTarget "CoverUpUITests" */;
+			buildPhases = (
+				0DA931AC46C80E7DF0514CA2 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2CEA459005F1ACC8CD837EE5 /* PBXTargetDependency */,
+			);
+			name = CoverUpUITests;
+			packageProductDependencies = (
+			);
+			productName = CoverUpUITests;
+			productReference = 9E88379ABCCC736FD5667A13 /* CoverUpUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		26BADE79788A9DB13C35A957 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					CBFB2CA98E1FBB6986EEE92B = {
+						TestTargetID = 1B63E065E2D7EF07AC33E7D9;
+					};
+				};
+			};
+			buildConfigurationList = 30BACC246AFA3B6181A47DCA /* Build configuration list for PBXProject "CoverUp" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 46E5032092540C3645D70929;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1B63E065E2D7EF07AC33E7D9 /* CoverUp */,
+				A3FFDFD197E869F91FF9AEE4 /* CoverUpTests */,
+				CBFB2CA98E1FBB6986EEE92B /* CoverUpUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0DA931AC46C80E7DF0514CA2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B6E888210B123760E670E081 /* CoverUpUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		29DE26B0EAFF55E75265FDD9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				07BE7B168B462B1A7CAE1CEA /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8E2E01D2DDB281BC6DDBAB9F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				20066BF57DECE4F58BD469DE /* CoverUpTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		2CEA459005F1ACC8CD837EE5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1B63E065E2D7EF07AC33E7D9 /* CoverUp */;
+			targetProxy = 996F5DAD3690479962C60A34 /* PBXContainerItemProxy */;
+		};
+		F9DF99AC78C4E4D4B179F4AE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1B63E065E2D7EF07AC33E7D9 /* CoverUp */;
+			targetProxy = 712C5A8F8E30A577EAEB509A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		19BD0BAAA25BC0B1753EB3CF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGNING_REQUIRED = NO;
+				CODE_SIGN_IDENTITY = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.namuan.CoverUpUITests;
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.9;
+				TEST_TARGET_NAME = CoverUp;
+			};
+			name = Debug;
+		};
+		42CD4CFDF0436F08EFF69144 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGNING_REQUIRED = NO;
+				CODE_SIGN_IDENTITY = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.namuan.CoverUpTests;
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.9;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CoverUp.app/Contents/MacOS/CoverUp";
+			};
+			name = Release;
+		};
+		4CFFB2F09147391DCBECCB6A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGNING_ALLOWED = NO;
+				CODE_SIGNING_REQUIRED = NO;
+				CODE_SIGN_ENTITLEMENTS = Sources/CoverUp/CoverUp.entitlements;
+				CODE_SIGN_IDENTITY = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = Sources/CoverUp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.namuan.coverup;
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.9;
+			};
+			name = Release;
+		};
+		4D2AC6ECC91D9F19BB8EDCC1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGNING_ALLOWED = NO;
+				CODE_SIGNING_REQUIRED = NO;
+				CODE_SIGN_ENTITLEMENTS = Sources/CoverUp/CoverUp.entitlements;
+				CODE_SIGN_IDENTITY = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = Sources/CoverUp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.namuan.coverup;
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.9;
+			};
+			name = Debug;
+		};
+		6F81C067E29B2BE705335A12 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		79543874B419258D9F3E6096 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGNING_REQUIRED = NO;
+				CODE_SIGN_IDENTITY = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.namuan.CoverUpUITests;
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.9;
+				TEST_TARGET_NAME = CoverUp;
+			};
+			name = Release;
+		};
+		A187A963E2B6C6A6BB6AF9C4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGNING_REQUIRED = NO;
+				CODE_SIGN_IDENTITY = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.namuan.CoverUpTests;
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.9;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CoverUp.app/Contents/MacOS/CoverUp";
+			};
+			name = Debug;
+		};
+		CD62F57A31C46B6FCE18311C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		30BACC246AFA3B6181A47DCA /* Build configuration list for PBXProject "CoverUp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CD62F57A31C46B6FCE18311C /* Debug */,
+				6F81C067E29B2BE705335A12 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		72DF1F8D13E7614DD7896F5D /* Build configuration list for PBXNativeTarget "CoverUpUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				19BD0BAAA25BC0B1753EB3CF /* Debug */,
+				79543874B419258D9F3E6096 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		A3309C93171CD611F0E76B20 /* Build configuration list for PBXNativeTarget "CoverUpTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A187A963E2B6C6A6BB6AF9C4 /* Debug */,
+				42CD4CFDF0436F08EFF69144 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		F27E357D3AFE353ED581FF75 /* Build configuration list for PBXNativeTarget "CoverUp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4D2AC6ECC91D9F19BB8EDCC1 /* Debug */,
+				4CFFB2F09147391DCBECCB6A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 26BADE79788A9DB13C35A957 /* Project object */;
+}

@@ -1,0 +1,48 @@
+name: CoverUp
+options:
+  bundleIdPrefix: com.namuan
+  deploymentTarget:
+    macOS: "12.0"
+  xcodeVersion: "15.0"
+targets:
+  CoverUp:
+    type: application
+    platform: macOS
+    deploymentTarget: "12.0"
+    sources:
+      - Sources/CoverUp
+    info:
+      path: Sources/CoverUp/Info.plist
+    entitlements:
+      path: Sources/CoverUp/CoverUp.entitlements
+    settings:
+      PRODUCT_BUNDLE_IDENTIFIER: com.namuan.coverup
+      SWIFT_VERSION: 5.9
+      MACOSX_DEPLOYMENT_TARGET: "12.0"
+      CODE_SIGN_IDENTITY: ""
+      CODE_SIGNING_REQUIRED: "NO"
+      CODE_SIGNING_ALLOWED: "NO"
+  CoverUpTests:
+    type: bundle.unit-test
+    platform: macOS
+    deploymentTarget: "12.0"
+    sources:
+      - Tests/CoverUpTests
+    dependencies:
+      - target: CoverUp
+    settings:
+      SWIFT_VERSION: 5.9
+      CODE_SIGN_IDENTITY: ""
+      CODE_SIGNING_REQUIRED: "NO"
+  CoverUpUITests:
+    type: bundle.ui-testing
+    platform: macOS
+    deploymentTarget: "12.0"
+    sources:
+      - Tests/CoverUpUITests
+    dependencies:
+      - target: CoverUp
+    settings:
+      SWIFT_VERSION: 5.9
+      CODE_SIGN_IDENTITY: ""
+      CODE_SIGNING_REQUIRED: "NO"
