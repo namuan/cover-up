@@ -14,6 +14,7 @@ final class StatusMenuController: NSObject {
     private var statusItem: NSStatusItem?
     private var controlPanel: NSPanel?
     private var regionListController: RegionListController?
+    private lazy var drawingController = RegionDrawingWindowController(manager: manager)
 
     // MARK: - Init
 
@@ -117,13 +118,7 @@ extension StatusMenuController: HotkeyHandlerDelegate {
     }
 
     func addStaticRegion() {
-        guard let screen = NSScreen.main else { return }
-        let cx = screen.frame.midX - 100
-        let cy = screen.frame.midY - 50
-        let region = MaskRegion(
-            relativeRect: CGRect(x: cx, y: cy, width: 200, height: 100)
-        )
-        manager.addRegion(region)
+        drawingController.activate()
     }
 
     func removeLastRegion() {
