@@ -117,8 +117,7 @@ final class IntegrationTests: XCTestCase {
     func testAllComponentsWiredInAppDelegate() {
         let mgr = MaskRegionManager()
         let window = OverlayWindow(manager: mgr)
-        let hotkeys = HotkeyHandler()
-        let statusCtrl = StatusMenuController(manager: mgr, hotkeyHandler: hotkeys, overlayWindow: window)
+        let statusCtrl = StatusMenuController(manager: mgr, overlayWindow: window)
 
         XCTAssertNotNil(window.overlayView, "OverlayView must be wired in window")
         XCTAssertNotNil(statusCtrl, "StatusMenuController must initialize without crash")

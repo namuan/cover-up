@@ -5,12 +5,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     private var maskRegionManager: MaskRegionManager?
     private var windowTracker: WindowTracker?
     private var statusMenuController: StatusMenuController?
-    private var hotkeyHandler: HotkeyHandler?
     private var onboardingWindowController: OnboardingWindowController?
 
     func applicationDidFinishLaunching(_ notification: Notification) {
         logInfo("applicationDidFinishLaunching — activation policy: \(NSApp.activationPolicy().rawValue)")
-        logInfo("allGranted=\(PermissionManager.allGranted), screenRecording=\(PermissionManager.Permission.screenRecording.isGranted), accessibility=\(PermissionManager.Permission.accessibility.isGranted)")
+        logInfo("allGranted=\(PermissionManager.allGranted), screenRecording=\(PermissionManager.Permission.screenRecording.isGranted)")
 
         let onboarding = OnboardingWindowController()
         onboardingWindowController = onboarding
@@ -37,7 +36,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     private func startCoreComponents() {
-        logInfo("startCoreComponents — creating MaskRegionManager, OverlayWindow, WindowTracker, HotkeyHandler, StatusMenuController")
+        logInfo("startCoreComponents — creating MaskRegionManager, OverlayWindow, WindowTracker, StatusMenuController")
 
         let manager = MaskRegionManager()
         maskRegionManager = manager
@@ -54,12 +53,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         tracker.start()
         logInfo("WindowTracker started")
 
-        let hotkeys = HotkeyHandler()
-        hotkeyHandler = hotkeys
-
         let statusCtrl = StatusMenuController(
             manager: manager,
-            hotkeyHandler: hotkeys,
             overlayWindow: window
         )
         statusMenuController = statusCtrl

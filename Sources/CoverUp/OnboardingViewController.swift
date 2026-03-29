@@ -62,7 +62,7 @@ final class OnboardingViewController: NSViewController {
 
         // Subtitle
         let subtitleLabel = NSTextField(wrappingLabelWithString:
-            "CoverUp hides sensitive screen regions in real time.\nTwo permissions are needed before it can work.")
+            "CoverUp hides sensitive screen regions in real time.\nOne permission is needed before it can work.")
         subtitleLabel.font = .systemFont(ofSize: 13)
         subtitleLabel.textColor = .secondaryLabelColor
         subtitleLabel.alignment = .center

@@ -6,12 +6,10 @@ final class PermissionManager {
 
     enum Permission: CaseIterable {
         case screenRecording
-        case accessibility
 
         var title: String {
             switch self {
             case .screenRecording: return "Screen Recording"
-            case .accessibility:   return "Accessibility"
             }
         }
 
@@ -19,15 +17,12 @@ final class PermissionManager {
             switch self {
             case .screenRecording:
                 return "Required to track window positions so overlay regions stay aligned."
-            case .accessibility:
-                return "Required for global hotkeys (⌘⇧H / ⌘⇧A / ⌘⇧D) to work system-wide."
             }
         }
 
         var symbolName: String {
             switch self {
             case .screenRecording: return "rectangle.dashed.badge.record"
-            case .accessibility:   return "accessibility"
             }
         }
 
@@ -37,10 +32,6 @@ final class PermissionManager {
                 let granted = CGPreflightScreenCaptureAccess()
                 logDebug("PermissionManager.screenRecording.isGranted → \(granted)")
                 return granted
-            case .accessibility:
-                let granted = AXIsProcessTrusted()
-                logDebug("PermissionManager.accessibility.isGranted → \(granted)")
-                return granted
             }
         }
 
@@ -48,8 +39,6 @@ final class PermissionManager {
             switch self {
             case .screenRecording:
                 return URL(string: "x-apple.systempreferences:com.apple.preference.security?Privacy_ScreenCapture")!
-            case .accessibility:
-                return URL(string: "x-apple.systempreferences:com.apple.preference.security?Privacy_Accessibility")!
             }
         }
 
@@ -59,9 +48,6 @@ final class PermissionManager {
             switch self {
             case .screenRecording:
                 CGRequestScreenCaptureAccess()
-            case .accessibility:
-                let opts: NSDictionary = [kAXTrustedCheckOptionPrompt.takeUnretainedValue(): true]
-                AXIsProcessTrustedWithOptions(opts)
             }
         }
     }

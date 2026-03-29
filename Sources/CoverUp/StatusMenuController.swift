@@ -6,7 +6,6 @@ final class StatusMenuController: NSObject {
     // MARK: - Dependencies
 
     private let manager: MaskRegionManager
-    private let hotkeyHandler: HotkeyHandler
     private weak var overlayWindow: OverlayWindow?
 
     // MARK: - UI
@@ -18,14 +17,12 @@ final class StatusMenuController: NSObject {
 
     // MARK: - Init
 
-    init(manager: MaskRegionManager, hotkeyHandler: HotkeyHandler, overlayWindow: OverlayWindow?) {
+    init(manager: MaskRegionManager, overlayWindow: OverlayWindow?) {
         self.manager = manager
-        self.hotkeyHandler = hotkeyHandler
         self.overlayWindow = overlayWindow
         super.init()
         logInfo("StatusMenuController init")
         setupStatusItem()
-        setupHotkeys()
     }
 
     // MARK: - Status Item
@@ -64,11 +61,6 @@ final class StatusMenuController: NSObject {
         statusItem?.menu = menu
     }
 
-    private func setupHotkeys() {
-        hotkeyHandler.delegate = self
-        hotkeyHandler.startMonitoring()
-    }
-
     // MARK: - Control Panel
 
     @objc func showControlPanel() {
@@ -96,32 +88,17 @@ final class StatusMenuController: NSObject {
 
     // MARK: - Menu Actions
 
-    @objc private func menuToggleOverlay() { toggleOverlayVisibility() }
-    @objc private func menuAddRegion()     { addStaticRegion() }
-    @objc private func menuRemoveLastRegion() { removeLastRegion() }
-}
-
-// MARK: - HotkeyHandlerDelegate
-
-extension StatusMenuController: HotkeyHandlerDelegate {
-    func toggleOverlayVisibility() {
-        guard let window = overlayWindow else {
-            logWarning("StatusMenuController toggleOverlayVisibility — overlayWindow is nil")
-            return
-        }
-        logInfo("StatusMenuController toggleOverlayVisibility — currently isVisible=\(window.isVisible)")
-        if window.isVisible {
-            window.orderOut(nil)
-        } else {
-            window.orderFrontRegardless()
-        }
+    @objc private func menuToggleOverlay() {
+        guard let window = overlayWindow else { return }
+        logInfo("StatusMenuController toggleOverlay — currently isVisible=\(window.isVisible)")
+        if window.isVisible { window.orderOut(nil) } else { window.orderFrontRegardless() }
     }
 
-    func addStaticRegion() {
+    @objc private func menuAddRegion() {
         drawingController.activate()
     }
 
-    func removeLastRegion() {
+    @objc private func menuRemoveLastRegion() {
         guard let last = manager.regions.last else { return }
         manager.removeRegion(id: last.id)
     }

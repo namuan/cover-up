@@ -29,7 +29,6 @@ final class OnboardingWindowController: NSWindowController {
     func showIfNeeded() -> Bool {
         logInfo("showIfNeeded — allGranted=\(PermissionManager.allGranted)")
         logInfo("  screenRecording=\(PermissionManager.Permission.screenRecording.isGranted)")
-        logInfo("  accessibility=\(PermissionManager.Permission.accessibility.isGranted)")
 
         guard !PermissionManager.allGranted else {
             logInfo("showIfNeeded — all permissions granted, skipping window")
