@@ -4,26 +4,26 @@
 
 - [x] Task-001: Xcode project setup (commit: c7b041b)
 - [x] Task-002: Overlay Window — OverlayWindow, OverlayView, unit tests (commit: TBD)
+- [x] Task-003: MaskRegion model and manager (commit: d76edcc)
 
 ---
 
 ## Current Iteration
 
-- **Iteration:** 3
-- **Working on:** Task-003 (next)
+- **Iteration:** 4
+- **Working on:** Task-004 (next)
 - **Started:** 2026-03-29
 
 ---
 
 ## Last Completed
 
-- **Task-002:** Overlay Window
-- **Tests:** 6/6 passing (OverlayWindowTests)
+- **Task-003:** MaskRegion model and manager
+- **Tests:** 9/9 passing (MaskRegionManagerTests)
 - **Key decisions:**
-  - OverlayWindow uses `.screenSaver` level, click-through (`ignoresMouseEvents`), borderless, clear background
-  - Frame computed as union of all NSScreen.screens frames
-  - AppDelegate stores `overlayWindow` as private var (strong reference)
-  - Fixed CoverUpUITests code signing: added `CODE_SIGNING_ALLOWED: "NO"` to project.yml
+  - `MaskRegion` is a value type (`struct`) conforming to `Equatable` and `Identifiable`
+  - `MaskRegionManager` uses `CurrentValueSubject<[MaskRegion], Never>` for Combine-based state
+  - All mutations are guarded (no-op on missing id, duplicate-id prevention)
 
 ---
 
