@@ -88,6 +88,7 @@ final class RegionDrawingView: NSView {
     private var dragOrigin: NSPoint?
     private var rubberBandRect: NSRect?
     private var selectedID: String?
+    private var windowPicker: WindowPickerPanel?
 
     override var acceptsFirstResponder: Bool { true }
     override var isFlipped: Bool { false }
@@ -144,7 +145,24 @@ final class RegionDrawingView: NSView {
         let region = MaskRegion(relativeRect: screenRect)
         manager?.addRegion(region)
         logInfo("RegionDrawingView added region rect=\(screenRect)")
+        showWindowPicker(for: region.id, near: screenRect)
         // Stay open so user can draw additional regions or delete existing ones
+    }
+
+    private func showWindowPicker(for regionID: String, near screenRect: CGRect) {
+        let picker = WindowPickerPanel()
+        windowPicker = picker
+        picker.onSelect = { [weak self] title in
+            guard let self else { return }
+            self.windowPicker = nil
+            if let title {
+                self.manager?.updateTargetWindowTitle(id: regionID, title: title)
+            }
+            // Restore key focus to the drawing overlay
+            self.window?.makeKeyAndOrderFront(nil)
+            self.window?.makeFirstResponder(self)
+        }
+        picker.show(near: screenRect)
     }
 
     override func keyDown(with event: NSEvent) {
@@ -256,6 +274,35 @@ final class RegionDrawingView: NSView {
             NSColor(white: 0, alpha: 0.75).setFill()
             NSBezierPath(roundedRect: bgRect, xRadius: 4, yRadius: 4).fill()
             hintStr.draw(at: hintOrigin)
+        }
+
+        // Show tracking badge when a window title is assigned
+        if let title = region.targetWindowTitle, !title.isEmpty {
+            let badge = "⇄ \(title)"
+            let badgeAttrs: [NSAttributedString.Key: Any] = [
+                .foregroundColor: NSColor.white,
+                .font: NSFont.systemFont(ofSize: 10)
+            ]
+            let badgeStr = NSAttributedString(string: badge, attributes: badgeAttrs)
+            let badgeSize = badgeStr.size()
+            let maxWidth = rect.width - 8
+            let clampedWidth = min(badgeSize.width, maxWidth)
+            let badgeOrigin = NSPoint(x: rect.minX + 4, y: rect.minY + 4)
+            let bgRect = NSRect(
+                x: badgeOrigin.x - 2, y: badgeOrigin.y - 2,
+                width: clampedWidth + 8, height: badgeSize.height + 4
+            )
+            NSColor(calibratedRed: 0.2, green: 0.5, blue: 1.0, alpha: 0.85).setFill()
+            NSBezierPath(roundedRect: bgRect, xRadius: 3, yRadius: 3).fill()
+
+            let clipPath = NSBezierPath(rect: NSRect(
+                x: badgeOrigin.x, y: badgeOrigin.y,
+                width: clampedWidth, height: badgeSize.height
+            ))
+            NSGraphicsContext.saveGraphicsState()
+            clipPath.setClip()
+            badgeStr.draw(at: badgeOrigin)
+            NSGraphicsContext.restoreGraphicsState()
         }
     }
 

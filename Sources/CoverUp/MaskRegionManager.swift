@@ -48,4 +48,11 @@ final class MaskRegionManager {
         guard let index = regionsSubject.value.firstIndex(where: { $0.id == id }) else { return }
         regionsSubject.value[index].relativeRect = rect
     }
+
+    /// Update `targetWindowTitle` for the given id (used after the user assigns window tracking post-draw).
+    func updateTargetWindowTitle(id: String, title: String?) {
+        guard let index = regionsSubject.value.firstIndex(where: { $0.id == id }) else { return }
+        logInfo("MaskRegionManager updateTargetWindowTitle id=\(id) title=\(title ?? "nil")")
+        regionsSubject.value[index].targetWindowTitle = title
+    }
 }

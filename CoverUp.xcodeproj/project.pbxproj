@@ -30,6 +30,7 @@
 		E9AC9CA12BE1C5326313FBA2 /* OverlayWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF3196902ECE6ECEA391FD3 /* OverlayWindow.swift */; };
 		FB18A832C12E46E5FB89B209 /* MaskRegionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AFE668A7AB2069E74512C2 /* MaskRegionManager.swift */; };
 		FCC26F20C3FA242D0027C48C /* WindowTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42287EC480133AE56389B1E /* WindowTracker.swift */; };
+		AA1234BB5678CDEF90AB1234 /* WindowPickerPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1234BB5678CDEF90AB1235 /* WindowPickerPanel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +79,7 @@
 		E40C058FFCF307838807829F /* CoverUp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoverUp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCF3196902ECE6ECEA391FD3 /* OverlayWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayWindow.swift; sourceTree = "<group>"; };
 		FEEDAA1DAAED4270E6739BF4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AA1234BB5678CDEF90AB1235 /* WindowPickerPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowPickerPanel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -145,6 +147,7 @@
 				C239301D614ED4E6B71F7BD5 /* RegionListController.swift */,
 				4C4663AEB106D7DEF3D0795C /* StatusMenuController.swift */,
 				C42287EC480133AE56389B1E /* WindowTracker.swift */,
+				AA1234BB5678CDEF90AB1235 /* WindowPickerPanel.swift */,
 			);
 			name = CoverUp;
 			path = Sources/CoverUp;
@@ -280,6 +283,7 @@
 				39C4B9522BDD8B403476ABC9 /* RegionListController.swift in Sources */,
 				3FF4CE7556D64C97B48838C0 /* StatusMenuController.swift in Sources */,
 				FCC26F20C3FA242D0027C48C /* WindowTracker.swift in Sources */,
+				AA1234BB5678CDEF90AB1234 /* WindowPickerPanel.swift in Sources */,
 				691B2FB0E71ADE09EACD40CB /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
