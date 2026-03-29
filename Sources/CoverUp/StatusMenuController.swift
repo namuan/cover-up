@@ -42,26 +42,16 @@ final class StatusMenuController: NSObject {
 
         menu.addItem(NSMenuItem.separator())
 
-        let toggleItem = NSMenuItem(title: "Toggle Overlay", action: nil, keyEquivalent: "")
-        toggleItem.keyEquivalentModifierMask = []
-        toggleItem.isEnabled = false
-        toggleItem.attributedTitle = NSAttributedString(
-            string: "Toggle Overlay          ⌘⇧H",
-            attributes: [.font: NSFont.menuFont(ofSize: 0)])
+        let toggleItem = NSMenuItem(title: "Toggle Overlay", action: #selector(menuToggleOverlay), keyEquivalent: "")
+        toggleItem.target = self
         menu.addItem(toggleItem)
 
-        let addItem = NSMenuItem(title: "Add Region", action: nil, keyEquivalent: "")
-        addItem.isEnabled = false
-        addItem.attributedTitle = NSAttributedString(
-            string: "Add Static Region     ⌘⇧A",
-            attributes: [.font: NSFont.menuFont(ofSize: 0)])
+        let addItem = NSMenuItem(title: "Add Static Region", action: #selector(menuAddRegion), keyEquivalent: "")
+        addItem.target = self
         menu.addItem(addItem)
 
-        let removeItem = NSMenuItem(title: "Remove Region", action: nil, keyEquivalent: "")
-        removeItem.isEnabled = false
-        removeItem.attributedTitle = NSAttributedString(
-            string: "Remove Last Region  ⌘⇧D",
-            attributes: [.font: NSFont.menuFont(ofSize: 0)])
+        let removeItem = NSMenuItem(title: "Remove Last Region", action: #selector(menuRemoveLastRegion), keyEquivalent: "")
+        removeItem.target = self
         menu.addItem(removeItem)
 
         menu.addItem(NSMenuItem.separator())
@@ -99,6 +89,12 @@ final class StatusMenuController: NSObject {
         controlPanel?.orderFront(nil)
         NSApp.activate(ignoringOtherApps: true)
     }
+
+    // MARK: - Menu Actions
+
+    @objc private func menuToggleOverlay() { toggleOverlayVisibility() }
+    @objc private func menuAddRegion()     { addStaticRegion() }
+    @objc private func menuRemoveLastRegion() { removeLastRegion() }
 }
 
 // MARK: - HotkeyHandlerDelegate
