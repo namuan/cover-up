@@ -28,6 +28,10 @@ CoverUp.xcodeproj/
 Pods/
 *.xcworkspace
 
+# Profiling artifacts
+*.profraw
+*.profdata
+
 # Fastlane
 fastlane/report.xml
 fastlane/Preview.html
