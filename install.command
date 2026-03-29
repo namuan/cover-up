@@ -66,7 +66,7 @@ tccutil reset ScreenCapture com.namuan.coverup 2>/dev/null || true
 tccutil reset Accessibility com.namuan.coverup 2>/dev/null || true
 echo "Permissions reset."
 
-cp -R "$BUILT_APP" "$DEST_APP"
+mv "$BUILT_APP" "$DEST_APP"
 
 echo "Done."
 open "$DEST_APP"
