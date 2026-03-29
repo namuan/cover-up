@@ -59,6 +59,13 @@ fi
 echo "Installing to ${DEST_APP}..."
 mkdir -p "$DEST_DIR"
 rm -rf "$DEST_APP"
+
+# Reset TCC permissions so macOS re-prompts on next launch.
+echo "Resetting existing permissions for com.namuan.coverup..."
+tccutil reset ScreenCapture com.namuan.coverup 2>/dev/null || true
+tccutil reset Accessibility com.namuan.coverup 2>/dev/null || true
+echo "Permissions reset."
+
 cp -R "$BUILT_APP" "$DEST_APP"
 
 echo "Done."
