@@ -25,11 +25,27 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let hotkeys = HotkeyHandler()
         hotkeyHandler = hotkeys
 
-        statusMenuController = StatusMenuController(
+        let statusCtrl = StatusMenuController(
             manager: manager,
             hotkeyHandler: hotkeys,
             overlayWindow: window
         )
+        statusMenuController = statusCtrl
+
+        // Test support: launch arguments for XCUITest
+        let args = ProcessInfo.processInfo.arguments
+        if args.contains("--add-test-region") {
+            let region = MaskRegion(
+                id: "uitest-region-1",
+                relativeRect: CGRect(x: 100, y: 100, width: 200, height: 100)
+            )
+            manager.addRegion(region)
+        }
+        if args.contains("--open-control-panel") {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                statusCtrl.showControlPanel()
+            }
+        }
     }
 
     func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
