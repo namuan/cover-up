@@ -22,6 +22,7 @@ final class StatusMenuController: NSObject {
         self.hotkeyHandler = hotkeyHandler
         self.overlayWindow = overlayWindow
         super.init()
+        logInfo("StatusMenuController init")
         setupStatusItem()
         setupHotkeys()
     }
@@ -48,6 +49,7 @@ final class StatusMenuController: NSObject {
     // MARK: - Control Panel
 
     @objc func showControlPanel() {
+        logInfo("StatusMenuController showControlPanel")
         if controlPanel == nil {
             let panel = NSPanel(
                 contentRect: NSRect(x: 0, y: 0, width: 360, height: 400),
@@ -74,7 +76,11 @@ final class StatusMenuController: NSObject {
 
 extension StatusMenuController: HotkeyHandlerDelegate {
     func toggleOverlayVisibility() {
-        guard let window = overlayWindow else { return }
+        guard let window = overlayWindow else {
+            logWarning("StatusMenuController toggleOverlayVisibility — overlayWindow is nil")
+            return
+        }
+        logInfo("StatusMenuController toggleOverlayVisibility — currently isVisible=\(window.isVisible)")
         if window.isVisible {
             window.orderOut(nil)
         } else {

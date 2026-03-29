@@ -23,7 +23,11 @@ final class HotkeyHandler {
     // MARK: - Lifecycle
 
     func startMonitoring() {
-        guard monitor == nil else { return }
+        guard monitor == nil else {
+            logInfo("HotkeyHandler.startMonitoring called but already monitoring")
+            return
+        }
+        logInfo("HotkeyHandler starting global key monitor")
         monitor = NSEvent.addGlobalMonitorForEvents(matching: .keyDown) { [weak self] event in
             self?.handleKeyEvent(flags: event.modifierFlags, keyCode: event.keyCode)
         }
@@ -31,6 +35,7 @@ final class HotkeyHandler {
 
     func stopMonitoring() {
         if let monitor = monitor {
+            logInfo("HotkeyHandler stopping global key monitor")
             NSEvent.removeMonitor(monitor)
             self.monitor = nil
         }
@@ -43,12 +48,16 @@ final class HotkeyHandler {
         let required: NSEvent.ModifierFlags = [.command, .shift]
         guard flags.intersection(.deviceIndependentFlagsMask).contains(required) else { return }
 
+        logInfo("HotkeyHandler keyCode=\(keyCode) matched ⌘⇧ combo")
         switch keyCode {
         case HotkeyHandler.keyH:
+            logInfo("HotkeyHandler → toggleOverlayVisibility")
             delegate?.toggleOverlayVisibility()
         case HotkeyHandler.keyA:
+            logInfo("HotkeyHandler → addStaticRegion")
             delegate?.addStaticRegion()
         case HotkeyHandler.keyD:
+            logInfo("HotkeyHandler → removeLastRegion")
             delegate?.removeLastRegion()
         default:
             break

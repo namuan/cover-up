@@ -25,6 +25,7 @@ final class OnboardingViewController: NSViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        logInfo("OnboardingViewController viewDidLoad — building UI")
         buildUI()
         refresh()
         // Re-check status every second so the UI updates when the user
@@ -32,6 +33,7 @@ final class OnboardingViewController: NSViewController {
         pollTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] _ in
             self?.refresh()
         }
+        logInfo("OnboardingViewController poll timer started")
     }
 
     override func viewDidDisappear() {
@@ -126,6 +128,7 @@ final class OnboardingViewController: NSViewController {
     private func refresh() {
         rowViews.forEach { $0.refresh() }
         let allGranted = PermissionManager.allGranted
+        logDebug("OnboardingViewController refresh — allGranted=\(allGranted)")
         continueButton.isEnabled = allGranted
         continueButton.title = allGranted ? "Continue" : "Waiting for Permissions…"
     }
@@ -133,6 +136,7 @@ final class OnboardingViewController: NSViewController {
     // MARK: - Actions
 
     @objc private func continueTapped() {
+        logInfo("OnboardingViewController continueTapped — posting onboardingDidComplete")
         pollTimer?.invalidate()
         pollTimer = nil
         view.window?.close()

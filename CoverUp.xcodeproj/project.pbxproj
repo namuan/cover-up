@@ -13,6 +13,7 @@
 		0BD7BC7675CD105DFC803A90 /* MaskRegionManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61EEFCDB0351B443C0D1AC66 /* MaskRegionManagerTests.swift */; };
 		0C3422EFFFBA33D845062B72 /* IntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E38414E767EB2449737894 /* IntegrationTests.swift */; };
 		1EAC02D640892B99D28A731A /* HotkeyHandlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27BA90DF4A30A2E7E7EAF822 /* HotkeyHandlerTests.swift */; };
+		1F394F5C3163F7B749CA9129 /* AppLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8CD3FA54A826728DCFC369 /* AppLogger.swift */; };
 		20066BF57DECE4F58BD469DE /* CoverUpTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C3D9136015AF20E2C7E98CB /* CoverUpTests.swift */; };
 		3721E43E389FD2A3FF6F51F6 /* OverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C15FC8242CE5643EBAD1BB /* OverlayView.swift */; };
 		39C4B9522BDD8B403476ABC9 /* RegionListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C239301D614ED4E6B71F7BD5 /* RegionListController.swift */; };
@@ -54,6 +55,7 @@
 		27BA90DF4A30A2E7E7EAF822 /* HotkeyHandlerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotkeyHandlerTests.swift; sourceTree = "<group>"; };
 		328EB9FAC0F2EDAE70D27729 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		45CA4E02047251ED7705B620 /* WindowTrackerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowTrackerTests.swift; sourceTree = "<group>"; };
+		4A8CD3FA54A826728DCFC369 /* AppLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLogger.swift; sourceTree = "<group>"; };
 		4C4663AEB106D7DEF3D0795C /* StatusMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusMenuController.swift; sourceTree = "<group>"; };
 		52DF6A2D8EDFAE9087CA25FE /* OnboardingWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingWindowController.swift; sourceTree = "<group>"; };
 		57B160FBE2CB80F589623203 /* OverlayViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayViewTests.swift; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 			isa = PBXGroup;
 			children = (
 				8DD9D91A3C7767266E604A16 /* AppDelegate.swift */,
+				4A8CD3FA54A826728DCFC369 /* AppLogger.swift */,
 				91C0FA549B3DD617F2CB9AEE /* CGWindowListProvider.swift */,
 				C508800A187020D4ACA5A910 /* CoverUp.entitlements */,
 				19BE9F68138A3530AED83461 /* HotkeyHandler.swift */,
@@ -249,6 +252,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				07BE7B168B462B1A7CAE1CEA /* AppDelegate.swift in Sources */,
+				1F394F5C3163F7B749CA9129 /* AppLogger.swift in Sources */,
 				06E8B1762601DFD131F2ECBD /* CGWindowListProvider.swift in Sources */,
 				3DEF6C5A264FBEFA676D83AA /* HotkeyHandler.swift in Sources */,
 				9473F2B945C39029A49B0527 /* MaskRegion.swift in Sources */,

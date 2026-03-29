@@ -4,6 +4,7 @@ import AppKit
 final class OnboardingWindowController: NSWindowController {
 
     convenience init() {
+        logInfo("OnboardingWindowController init")
         let vc = OnboardingViewController()
 
         let window = NSWindow(contentViewController: vc)
@@ -13,6 +14,7 @@ final class OnboardingWindowController: NSWindowController {
         window.center()
 
         self.init(window: window)
+        logInfo("OnboardingWindowController window created — frame: \(window.frame)")
     }
 
     /// Shows the onboarding window if any permission is missing.
@@ -25,18 +27,34 @@ final class OnboardingWindowController: NSWindowController {
     ///            `false` if all permissions are already granted.
     @discardableResult
     func showIfNeeded() -> Bool {
-        guard !PermissionManager.allGranted else { return false }
-        // Switch to .regular so the window appears and receives keyboard focus.
+        logInfo("showIfNeeded — allGranted=\(PermissionManager.allGranted)")
+        logInfo("  screenRecording=\(PermissionManager.Permission.screenRecording.isGranted)")
+        logInfo("  accessibility=\(PermissionManager.Permission.accessibility.isGranted)")
+
+        guard !PermissionManager.allGranted else {
+            logInfo("showIfNeeded — all permissions granted, skipping window")
+            return false
+        }
+
+        logInfo("showIfNeeded — setting activationPolicy to .regular")
         NSApp.setActivationPolicy(.regular)
+        logInfo("showIfNeeded — activationPolicy is now \(NSApp.activationPolicy().rawValue)")
+
+        logInfo("showIfNeeded — calling NSApp.activate")
         NSApp.activate(ignoringOtherApps: true)
+
+        logInfo("showIfNeeded — calling makeKeyAndOrderFront + orderFrontRegardless")
         window?.makeKeyAndOrderFront(nil)
         window?.orderFrontRegardless()
+
+        logInfo("showIfNeeded — window.isVisible=\(window?.isVisible ?? false), window.isKeyWindow=\(window?.isKeyWindow ?? false)")
         return true
     }
 
     /// Call after onboarding completes to remove the Dock icon and return
     /// to headless menu-bar-only mode.
     func restoreAccessoryPolicy() {
+        logInfo("restoreAccessoryPolicy — switching back to .accessory")
         NSApp.setActivationPolicy(.accessory)
     }
 }

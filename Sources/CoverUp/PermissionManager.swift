@@ -34,9 +34,13 @@ final class PermissionManager {
         var isGranted: Bool {
             switch self {
             case .screenRecording:
-                return CGPreflightScreenCaptureAccess()
+                let granted = CGPreflightScreenCaptureAccess()
+                logDebug("PermissionManager.screenRecording.isGranted → \(granted)")
+                return granted
             case .accessibility:
-                return AXIsProcessTrusted()
+                let granted = AXIsProcessTrusted()
+                logDebug("PermissionManager.accessibility.isGranted → \(granted)")
+                return granted
             }
         }
 
@@ -51,6 +55,7 @@ final class PermissionManager {
 
         /// Trigger the system prompt where available.
         func requestAccess() {
+            logInfo("PermissionManager.requestAccess — \(title)")
             switch self {
             case .screenRecording:
                 CGRequestScreenCaptureAccess()
@@ -63,6 +68,8 @@ final class PermissionManager {
 
     /// `true` when every required permission has been granted.
     static var allGranted: Bool {
-        Permission.allCases.allSatisfy { $0.isGranted }
+        let result = Permission.allCases.allSatisfy { $0.isGranted }
+        logDebug("PermissionManager.allGranted → \(result)")
+        return result
     }
 }

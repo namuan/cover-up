@@ -23,6 +23,7 @@ class OverlayWindow: NSWindow {
     }
 
     private func configure() {
+        logInfo("OverlayWindow configure — screens=\(NSScreen.screens.count)")
         backgroundColor = .clear
         isOpaque = false
         hasShadow = false
@@ -31,11 +32,13 @@ class OverlayWindow: NSWindow {
         collectionBehavior = [.canJoinAllSpaces, .stationary, .fullScreenAuxiliary]
 
         let frame = NSScreen.screens.reduce(NSRect.zero) { $0.union($1.frame) }
+        logInfo("OverlayWindow frame=\(frame)")
         let view = OverlayView(frame: frame)
         contentView = view
         overlayViewInstance = view
 
         orderFrontRegardless()
+        logInfo("OverlayWindow orderFrontRegardless called — isVisible=\(isVisible)")
     }
 
     /// Convenience typed accessor.

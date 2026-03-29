@@ -21,18 +21,25 @@ final class MaskRegionManager {
 
     /// Append a new region. No-op if a region with the same `id` already exists.
     func addRegion(_ region: MaskRegion) {
-        guard !regionsSubject.value.contains(where: { $0.id == region.id }) else { return }
+        guard !regionsSubject.value.contains(where: { $0.id == region.id }) else {
+            logInfo("MaskRegionManager addRegion no-op — id \(region.id) already exists")
+            return
+        }
+        logInfo("MaskRegionManager addRegion id=\(region.id) total=\(regionsSubject.value.count + 1)")
         regionsSubject.value.append(region)
     }
 
     /// Remove the region with the given id. No-op if not found.
     func removeRegion(id: String) {
+        logInfo("MaskRegionManager removeRegion id=\(id)")
         regionsSubject.value.removeAll { $0.id == id }
     }
 
     /// Flip `isActive` for the region with the given id. No-op if not found.
     func toggleRegion(id: String) {
         guard let index = regionsSubject.value.firstIndex(where: { $0.id == id }) else { return }
+        let newValue = !regionsSubject.value[index].isActive
+        logInfo("MaskRegionManager toggleRegion id=\(id) isActive→\(newValue)")
         regionsSubject.value[index].isActive.toggle()
     }
 

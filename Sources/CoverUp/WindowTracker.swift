@@ -30,8 +30,12 @@ final class WindowTracker {
 
     /// Start polling at 30 FPS (~33 ms interval).
     func start() {
-        guard !isRunning else { return }
+        guard !isRunning else {
+            logInfo("WindowTracker.start called but already running")
+            return
+        }
         isRunning = true
+        logInfo("WindowTracker starting 30 FPS polling")
         timer = Timer.scheduledTimer(withTimeInterval: 1.0 / 30.0, repeats: true) { [weak self] _ in
             self?.tick()
         }
@@ -40,6 +44,7 @@ final class WindowTracker {
 
     /// Stop polling.
     func stop() {
+        logInfo("WindowTracker stopping")
         timer?.invalidate()
         timer = nil
         isRunning = false
