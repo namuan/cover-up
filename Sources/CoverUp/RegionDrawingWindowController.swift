@@ -1,6 +1,13 @@
 import AppKit
 import Combine
 
+// MARK: - Window (accepts key events)
+
+private final class RegionDrawingWindow: NSWindow {
+    override var canBecomeKey: Bool { true }
+    override var canBecomeMain: Bool { true }
+}
+
 // MARK: - Window Controller
 
 /// Manages the full-screen drawing/selection overlay.
@@ -23,7 +30,7 @@ final class RegionDrawingWindowController: NSObject {
 
         let allScreensFrame = NSScreen.screens.reduce(NSRect.zero) { $0.union($1.frame) }
 
-        let win = NSWindow(
+        let win = RegionDrawingWindow(
             contentRect: allScreensFrame,
             styleMask: .borderless,
             backing: .buffered,
@@ -46,7 +53,7 @@ final class RegionDrawingWindowController: NSObject {
         win.makeFirstResponder(view)
 
         window = win
-        win.orderFrontRegardless()
+        win.makeKeyAndOrderFront(nil)
         NSApp.activate(ignoringOtherApps: true)
         logInfo("RegionDrawingWindowController activated — frame=\(allScreensFrame)")
     }
