@@ -8,20 +8,27 @@
 - [x] Task-004: Window Tracker (commit: b879bdb)
 - [x] Task-006: HotkeyHandler, StatusMenuController, RegionListController (commit: 1f29ed8)
 - [x] Task-006-fix: Add LSUIElement=true to Info.plist (commit: 50a4acf)
+- [x] Task-007: Integration tests, performance test, component wiring (commit: d9ef5e6)
 
 ---
 
 ## Current Iteration
 
 - **Iteration:** 7
-- **Working on:** Task-007 (next)
+- **Working on:** DONE
 - **Started:** 2026-03-29
 
 ---
 
 ## Last Completed
 
-- **Task-006:** HotkeyHandler, StatusMenuController, RegionListController
+- **Task-007:** Integration tests, performance test, component wiring verification
+- **Tests:** 38/38 passing (+4 IntegrationTests)
+- **Key decisions:**
+  - `testPerformanceWith10Regions` uses explicit timing assertion (<5s for 90 ticks) instead of `measure {}` to avoid expectation re-use issues in repeated measure iterations
+  - `MockCGWindowListProvider` reused from `WindowTrackerTests.swift` (same test target, no redefinition needed)
+  - README updated with Screen Recording + Accessibility permission instructions
+  - UITest target confirmed building successfully
 - **Tests:** 34/34 passing (+6 HotkeyHandlerTests)
 - **Key decisions:**
   - `HotkeyHandler.handleKeyEvent(flags:keyCode:)` is public for direct test invocation (no monitor needed in tests)
