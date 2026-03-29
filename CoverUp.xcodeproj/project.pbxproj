@@ -19,6 +19,7 @@
 		39C4B9522BDD8B403476ABC9 /* RegionListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C239301D614ED4E6B71F7BD5 /* RegionListController.swift */; };
 		3DEF6C5A264FBEFA676D83AA /* HotkeyHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19BE9F68138A3530AED83461 /* HotkeyHandler.swift */; };
 		3FF4CE7556D64C97B48838C0 /* StatusMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4663AEB106D7DEF3D0795C /* StatusMenuController.swift */; };
+		4F636CBE32BBD3C34DB81783 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FEEDAA1DAAED4270E6739BF4 /* Assets.xcassets */; };
 		691B2FB0E71ADE09EACD40CB /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD65112C0F4B8C5350E8FF1 /* main.swift */; };
 		723ED2460FB7158E091814E9 /* OverlayViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B160FBE2CB80F589623203 /* OverlayViewTests.swift */; };
 		941035119B992809BFDB73D7 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D1884172C75EA1A9586ACC /* OnboardingViewController.swift */; };
@@ -78,6 +79,7 @@
 		E14E98E22794061D4ACF3DC9 /* OverlayWindowTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayWindowTests.swift; sourceTree = "<group>"; };
 		E40C058FFCF307838807829F /* CoverUp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoverUp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCF3196902ECE6ECEA391FD3 /* OverlayWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayWindow.swift; sourceTree = "<group>"; };
+		FEEDAA1DAAED4270E6739BF4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -130,6 +132,7 @@
 			children = (
 				8DD9D91A3C7767266E604A16 /* AppDelegate.swift */,
 				4A8CD3FA54A826728DCFC369 /* AppLogger.swift */,
+				FEEDAA1DAAED4270E6739BF4 /* Assets.xcassets */,
 				91C0FA549B3DD617F2CB9AEE /* CGWindowListProvider.swift */,
 				C508800A187020D4ACA5A910 /* CoverUp.entitlements */,
 				19BE9F68138A3530AED83461 /* HotkeyHandler.swift */,
@@ -158,6 +161,7 @@
 			buildConfigurationList = F27E357D3AFE353ED581FF75 /* Build configuration list for PBXNativeTarget "CoverUp" */;
 			buildPhases = (
 				29DE26B0EAFF55E75265FDD9 /* Sources */,
+				F4E36CA5FBC0A778D65E48D8 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -240,6 +244,17 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F4E36CA5FBC0A778D65E48D8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4F636CBE32BBD3C34DB81783 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		0DA931AC46C80E7DF0514CA2 /* Sources */ = {

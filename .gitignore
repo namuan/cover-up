@@ -32,6 +32,9 @@ Pods/
 *.profraw
 *.profdata
 
+# Generated app icon PNGs (built from assets/coverup-logo.png by install.command)
+Sources/CoverUp/Assets.xcassets/AppIcon.appiconset/Icon-*.png
+
 # Fastlane
 fastlane/report.xml
 fastlane/Preview.html

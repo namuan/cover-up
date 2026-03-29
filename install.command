@@ -24,6 +24,23 @@ BUILT_APP="$DERIVED/Build/Products/Release/$APP_NAME.app"
 DEST_DIR="$HOME/Applications"
 DEST_APP="$DEST_DIR/$APP_NAME.app"
 
+# ---------------------------------------------------------------------------
+# Build app icon from assets/coverup-logo.png
+# ---------------------------------------------------------------------------
+LOGO="$ROOT/assets/coverup-logo.png"
+ICONSET_DIR="$ROOT/Sources/CoverUp/Assets.xcassets/AppIcon.appiconset"
+
+if [ -f "$LOGO" ]; then
+  echo "Generating app icon from $LOGO..."
+  for size in 16 32 64 128 256 512 1024; do
+    sips -z "$size" "$size" "$LOGO" --out "$ICONSET_DIR/Icon-${size}.png" >/dev/null
+  done
+  echo "App icon generated."
+else
+  echo "Warning: $LOGO not found — skipping icon generation."
+fi
+# ---------------------------------------------------------------------------
+
 echo "Building $APP_NAME (Release)..."
 xcodebuild \
   -scheme "$SCHEME" \
