@@ -2,7 +2,7 @@
 
 ## Completed
 
-- [x] Task-001: Xcode project setup (commit: 1f1091e)
+- [x] Task-001: Xcode project setup (commit: c7b041b)
 
 ---
 
