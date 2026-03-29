@@ -2,15 +2,28 @@
 
 ## Completed
 
-_None yet_
+- [x] Task-001: Xcode project setup (commit: 1f1091e)
 
 ---
 
 ## Current Iteration
 
-- **Iteration:** 1
-- **Working on:** Task-001 — Xcode Project Setup
-- **Started:** 2026-03-29
+- **Iteration:** 2
+- **Working on:** —
+- **Started:** —
+
+---
+
+## Last Completed
+
+- **Task-001:** Xcode project setup
+- **Tests:** N/A (placeholder tests in place)
+- **Key decisions:**
+  - Used xcodegen (project.yml) to generate CoverUp.xcodeproj
+  - `@main` on AppDelegate — no main.swift needed (they conflict)
+  - Sandbox disabled (`com.apple.security.app-sandbox = false`) for CGWindowListCopyWindowInfo
+  - LSUIElement=YES so app runs as menu bar agent (no Dock icon)
+  - Code signing disabled (CODE_SIGN_IDENTITY="", CODE_SIGNING_REQUIRED=NO)
 
 ---
 
