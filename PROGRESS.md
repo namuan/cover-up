@@ -9,13 +9,14 @@
 - [x] Task-006: HotkeyHandler, StatusMenuController, RegionListController (commit: 1f29ed8)
 - [x] Task-006-fix: Add LSUIElement=true to Info.plist (commit: 50a4acf)
 - [x] Task-007: Integration tests, performance test, component wiring (commit: d9ef5e6)
+- [x] Task-007-fix: Real XCUITest with launch-arg control panel, test region pre-seeding (commit: 475bfd7)
 
 ---
 
 ## Current Iteration
 
-- **Iteration:** 7
-- **Working on:** DONE
+- **Iteration:** 8
+- **Working on:** DONE — all tasks complete
 - **Started:** 2026-03-29
 
 ---
