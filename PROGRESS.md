@@ -20,20 +20,12 @@
 
 ## Last Completed
 
-- **Task-005:** Rendering Engine
-- **Tests:** 27/27 passing (4 new OverlayViewTests added)
+- **Task-005-fix:** useBlur guard + test
+- **Tests:** 28/28 passing (+1 testUseBlurRegionNotDrawnAsBlack)
 - **Key decisions:**
-  - `OverlayView.draw()` clears to transparent then fills black for each active `MaskRegion.relativeRect`
-  - `OverlayView.manager` injected via `didSet`; Combine subscription in `observeManager()` triggers `needsDisplay = true` on main thread
-  - `OverlayWindow.convenience init(manager:)` injects manager into view after `configure()` runs; `override init` keeps old behaviour (ignores args, always uses screen-union frame) so ObjC/NSObject `init()` path still configures the window correctly
-  - `OverlayView.needsDisplay` override adds `_markedForRedraw` backing flag: AppKit's display cycle can clear the system flag for detached views during `wait(for:timeout:)` in unit tests; backing flag survives until `draw()` is called
-  - Off-screen rendering verified with `bitmapImageRepForCachingDisplay` + `cacheDisplay` — works headless
-  - `AppDelegate` now wires `MaskRegionManager` → `OverlayWindow(manager:)` → `WindowTracker`; tracker's `onUpdate` calls `overlayView?.scheduleRedraw()`
-
----
-
-## Last Completed
-
+  - `OverlayView.draw()` now skips regions where `useBlur == true` (Phase 1: no blur implemented)
+  - Removed duplicate "Last Completed" block from PROGRESS.md
+  - Original Task-005 notes preserved below
 - **Task-005:** Rendering Engine
 - **Tests:** 27/27 passing (4 new OverlayViewTests added)
 - **Key decisions:**

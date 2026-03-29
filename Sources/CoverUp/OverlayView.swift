@@ -54,7 +54,7 @@ class OverlayView: NSView {
         guard let regions = manager?.regions else { return }
 
         NSColor.black.setFill()
-        for region in regions where region.isActive {
+        for region in regions where region.isActive && !region.useBlur {
             region.relativeRect.fill()
         }
     }
