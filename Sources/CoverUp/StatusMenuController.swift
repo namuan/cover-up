@@ -42,15 +42,18 @@ final class StatusMenuController: NSObject {
 
         menu.addItem(NSMenuItem.separator())
 
-        let toggleItem = NSMenuItem(title: "Toggle Overlay", action: #selector(menuToggleOverlay), keyEquivalent: "")
+        let toggleItem = NSMenuItem(title: "Toggle Overlay", action: #selector(menuToggleOverlay), keyEquivalent: "h")
+        toggleItem.keyEquivalentModifierMask = [.command, .shift]
         toggleItem.target = self
         menu.addItem(toggleItem)
 
-        let addItem = NSMenuItem(title: "Add Static Region", action: #selector(menuAddRegion), keyEquivalent: "")
+        let addItem = NSMenuItem(title: "Add Static Region", action: #selector(menuAddRegion), keyEquivalent: "a")
+        addItem.keyEquivalentModifierMask = [.command, .shift]
         addItem.target = self
         menu.addItem(addItem)
 
-        let removeItem = NSMenuItem(title: "Remove Last Region", action: #selector(menuRemoveLastRegion), keyEquivalent: "")
+        let removeItem = NSMenuItem(title: "Remove Last Region", action: #selector(menuRemoveLastRegion), keyEquivalent: "d")
+        removeItem.keyEquivalentModifierMask = [.command, .shift]
         removeItem.target = self
         menu.addItem(removeItem)
 
