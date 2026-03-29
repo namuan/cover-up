@@ -5,25 +5,27 @@
 - [x] Task-001: Xcode project setup (commit: c7b041b)
 - [x] Task-002: Overlay Window — OverlayWindow, OverlayView, unit tests (commit: TBD)
 - [x] Task-003: MaskRegion model and manager (commit: d76edcc)
+- [x] Task-004: Window Tracker (commit: b879bdb)
 
 ---
 
 ## Current Iteration
 
-- **Iteration:** 4
-- **Working on:** Task-004 (next)
+- **Iteration:** 5
+- **Working on:** Task-005 (next)
 - **Started:** 2026-03-29
 
 ---
 
 ## Last Completed
 
-- **Task-003:** MaskRegion model and manager
-- **Tests:** 9/9 passing (MaskRegionManagerTests)
+- **Task-004:** Window Tracker
+- **Tests:** 7/7 passing (WindowTrackerTests)
 - **Key decisions:**
-  - `MaskRegion` is a value type (`struct`) conforming to `Equatable` and `Identifiable`
-  - `MaskRegionManager` uses `CurrentValueSubject<[MaskRegion], Never>` for Combine-based state
-  - All mutations are guarded (no-op on missing id, duplicate-id prevention)
+  - `CGWindowListProvider` protocol enables DI for unit tests (no real screen capture needed)
+  - `SystemCGWindowListProvider` is the production impl; injects `MockCGWindowListProvider` in tests
+  - `WindowTracker` polls at 30 FPS via `Timer`, skips regions with `nil` `targetWindowTitle`
+  - `convertToAppKit` flips y-axis: `appKitY = screenHeight - cgY - height`
 
 ---
 
