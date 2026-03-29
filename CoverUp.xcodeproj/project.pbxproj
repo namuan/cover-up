@@ -26,6 +26,7 @@
 		9473F2B945C39029A49B0527 /* MaskRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084AE5A7A58B5544C52935CD /* MaskRegion.swift */; };
 		953A77BE645A67C0EF800F20 /* PermissionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B709AEA918B5A77BB3B8608 /* PermissionManager.swift */; };
 		98DB5A9E3B76AC01AF61E490 /* WindowTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CA4E02047251ED7705B620 /* WindowTrackerTests.swift */; };
+		B31A114E10574F5F2D85432B /* RegionDrawingWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC0C75E8B1BCBA880CB175F /* RegionDrawingWindowController.swift */; };
 		B6E888210B123760E670E081 /* CoverUpUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B009CC62BAC12F94797C6D8 /* CoverUpUITests.swift */; };
 		D0E8F168C2AE6E4CB7132820 /* OverlayWindowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14E98E22794061D4ACF3DC9 /* OverlayWindowTests.swift */; };
 		E9AC9CA12BE1C5326313FBA2 /* OverlayWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF3196902ECE6ECEA391FD3 /* OverlayWindow.swift */; };
@@ -65,6 +66,7 @@
 		61EEFCDB0351B443C0D1AC66 /* MaskRegionManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaskRegionManagerTests.swift; sourceTree = "<group>"; };
 		65D1884172C75EA1A9586ACC /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		6C3D9136015AF20E2C7E98CB /* CoverUpTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverUpTests.swift; sourceTree = "<group>"; };
+		6DC0C75E8B1BCBA880CB175F /* RegionDrawingWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionDrawingWindowController.swift; sourceTree = "<group>"; };
 		7B709AEA918B5A77BB3B8608 /* PermissionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionManager.swift; sourceTree = "<group>"; };
 		8DD9D91A3C7767266E604A16 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		91C0FA549B3DD617F2CB9AEE /* CGWindowListProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGWindowListProvider.swift; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 				06C15FC8242CE5643EBAD1BB /* OverlayView.swift */,
 				FCF3196902ECE6ECEA391FD3 /* OverlayWindow.swift */,
 				7B709AEA918B5A77BB3B8608 /* PermissionManager.swift */,
+				6DC0C75E8B1BCBA880CB175F /* RegionDrawingWindowController.swift */,
 				C239301D614ED4E6B71F7BD5 /* RegionListController.swift */,
 				4C4663AEB106D7DEF3D0795C /* StatusMenuController.swift */,
 				C42287EC480133AE56389B1E /* WindowTracker.swift */,
@@ -280,6 +283,7 @@
 				3721E43E389FD2A3FF6F51F6 /* OverlayView.swift in Sources */,
 				E9AC9CA12BE1C5326313FBA2 /* OverlayWindow.swift in Sources */,
 				953A77BE645A67C0EF800F20 /* PermissionManager.swift in Sources */,
+				B31A114E10574F5F2D85432B /* RegionDrawingWindowController.swift in Sources */,
 				39C4B9522BDD8B403476ABC9 /* RegionListController.swift in Sources */,
 				3FF4CE7556D64C97B48838C0 /* StatusMenuController.swift in Sources */,
 				FCC26F20C3FA242D0027C48C /* WindowTracker.swift in Sources */,
