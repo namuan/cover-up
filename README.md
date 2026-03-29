@@ -23,12 +23,25 @@ xcodebuild -scheme CoverUp -destination 'platform=macOS' build
 xcodebuild test -scheme CoverUp -destination 'platform=macOS'
 ```
 
-## Screen Recording Permission
+## Permissions Required
+
+### Screen Recording
+1. Go to System Settings → Privacy & Security → Screen Recording
+2. Add CoverUp and enable it
+3. Restart CoverUp
 
 CoverUp uses `CGWindowListCopyWindowInfo` to track window positions. On first launch, macOS will
-prompt for Screen Recording permission. If it doesn't appear automatically, grant it via:
-
-**System Settings → Privacy & Security → Screen Recording → CoverUp**
+prompt for Screen Recording permission. If it doesn't appear automatically, follow the steps above.
 
 The app sandbox is disabled (`com.apple.security.app-sandbox = false`) so the CGWindow API
 can access window information from other applications.
+
+### Accessibility (for global hotkeys)
+1. Go to System Settings → Privacy & Security → Accessibility
+2. Add CoverUp and enable it
+
+## Running Tests
+
+```bash
+xcodebuild test -scheme CoverUp -destination 'platform=macOS'
+```
