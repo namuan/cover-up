@@ -69,4 +69,5 @@ echo "Permissions reset."
 mv "$BUILT_APP" "$DEST_APP"
 
 echo "Done."
+pkill -x CoverUp 2>/dev/null || true
 open "$DEST_APP"

@@ -98,6 +98,13 @@ final class OnboardingViewController: NSViewController {
         continueButton.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(continueButton)
 
+        // Exit button
+        let exitButton = NSButton(title: "Exit", target: self, action: #selector(exitTapped))
+        exitButton.bezelStyle = .rounded
+        exitButton.keyEquivalent = "\u{1b}"
+        exitButton.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(exitButton)
+
         // Activate constraints
         NSLayoutConstraint.activate([
             appIcon.topAnchor.constraint(equalTo: view.topAnchor, constant: 32),
@@ -120,6 +127,9 @@ final class OnboardingViewController: NSViewController {
             continueButton.topAnchor.constraint(equalTo: divider.bottomAnchor, constant: 14),
             continueButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             continueButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -16),
+
+            exitButton.centerYAnchor.constraint(equalTo: continueButton.centerYAnchor),
+            exitButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
         ] + rowConstraints)
     }
 
@@ -141,6 +151,11 @@ final class OnboardingViewController: NSViewController {
         pollTimer = nil
         view.window?.close()
         NotificationCenter.default.post(name: .onboardingDidComplete, object: nil)
+    }
+
+    @objc private func exitTapped() {
+        logInfo("OnboardingViewController exitTapped — terminating")
+        NSApp.terminate(nil)
     }
 }
 
