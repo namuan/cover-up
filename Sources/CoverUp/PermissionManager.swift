@@ -1,0 +1,68 @@
+import AppKit
+import CoreGraphics
+
+/// Checks and requests the macOS permissions required by CoverUp.
+final class PermissionManager {
+
+    enum Permission: CaseIterable {
+        case screenRecording
+        case accessibility
+
+        var title: String {
+            switch self {
+            case .screenRecording: return "Screen Recording"
+            case .accessibility:   return "Accessibility"
+            }
+        }
+
+        var detail: String {
+            switch self {
+            case .screenRecording:
+                return "Required to track window positions so overlay regions stay aligned."
+            case .accessibility:
+                return "Required for global hotkeys (⌘⇧H / ⌘⇧A / ⌘⇧D) to work system-wide."
+            }
+        }
+
+        var symbolName: String {
+            switch self {
+            case .screenRecording: return "rectangle.dashed.badge.record"
+            case .accessibility:   return "accessibility"
+            }
+        }
+
+        var isGranted: Bool {
+            switch self {
+            case .screenRecording:
+                return CGPreflightScreenCaptureAccess()
+            case .accessibility:
+                return AXIsProcessTrusted()
+            }
+        }
+
+        var settingsURL: URL {
+            switch self {
+            case .screenRecording:
+                return URL(string: "x-apple.systempreferences:com.apple.preference.security?Privacy_ScreenCapture")!
+            case .accessibility:
+                return URL(string: "x-apple.systempreferences:com.apple.preference.security?Privacy_Accessibility")!
+            }
+        }
+
+        /// Trigger the system prompt where available.
+        func requestAccess() {
+            switch self {
+            case .screenRecording:
+                CGRequestScreenCaptureAccess()
+            case .accessibility:
+                let opts: NSDictionary = [kAXTrustedCheckOptionPrompt.takeUnretainedValue(): true]
+                AXIsProcessTrustedWithOptions(opts)
+            }
+        }
+    }
+
+    /// `true` when every required permission has been granted.
+    static var allGranted: Bool {
+        Permission.allCases.allSatisfy { $0.isGranted }
+    }
+}

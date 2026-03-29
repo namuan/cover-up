@@ -7,8 +7,33 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     private var windowTracker: WindowTracker?
     private var statusMenuController: StatusMenuController?
     private var hotkeyHandler: HotkeyHandler?
+    private var onboardingWindowController: OnboardingWindowController?
 
     func applicationDidFinishLaunching(_ notification: Notification) {
+        // Show onboarding if any required permission is missing.
+        // Core components start only after all permissions are granted.
+        let onboarding = OnboardingWindowController()
+        onboardingWindowController = onboarding
+
+        if onboarding.showIfNeeded() {
+            // Wait for onboarding to complete before starting the overlay.
+            NotificationCenter.default.addObserver(
+                self,
+                selector: #selector(onboardingDidComplete),
+                name: .onboardingDidComplete,
+                object: nil
+            )
+        } else {
+            startCoreComponents()
+        }
+    }
+
+    @objc private func onboardingDidComplete() {
+        NotificationCenter.default.removeObserver(self, name: .onboardingDidComplete, object: nil)
+        startCoreComponents()
+    }
+
+    private func startCoreComponents() {
         let manager = MaskRegionManager()
         maskRegionManager = manager
 
