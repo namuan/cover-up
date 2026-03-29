@@ -19,6 +19,7 @@
 		39C4B9522BDD8B403476ABC9 /* RegionListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C239301D614ED4E6B71F7BD5 /* RegionListController.swift */; };
 		3DEF6C5A264FBEFA676D83AA /* HotkeyHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19BE9F68138A3530AED83461 /* HotkeyHandler.swift */; };
 		3FF4CE7556D64C97B48838C0 /* StatusMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4663AEB106D7DEF3D0795C /* StatusMenuController.swift */; };
+		691B2FB0E71ADE09EACD40CB /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD65112C0F4B8C5350E8FF1 /* main.swift */; };
 		723ED2460FB7158E091814E9 /* OverlayViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B160FBE2CB80F589623203 /* OverlayViewTests.swift */; };
 		941035119B992809BFDB73D7 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D1884172C75EA1A9586ACC /* OnboardingViewController.swift */; };
 		9473F2B945C39029A49B0527 /* MaskRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084AE5A7A58B5544C52935CD /* MaskRegion.swift */; };
@@ -51,6 +52,7 @@
 /* Begin PBXFileReference section */
 		06C15FC8242CE5643EBAD1BB /* OverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayView.swift; sourceTree = "<group>"; };
 		084AE5A7A58B5544C52935CD /* MaskRegion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaskRegion.swift; sourceTree = "<group>"; };
+		0BD65112C0F4B8C5350E8FF1 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		19BE9F68138A3530AED83461 /* HotkeyHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotkeyHandler.swift; sourceTree = "<group>"; };
 		27BA90DF4A30A2E7E7EAF822 /* HotkeyHandlerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotkeyHandlerTests.swift; sourceTree = "<group>"; };
 		328EB9FAC0F2EDAE70D27729 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 				C508800A187020D4ACA5A910 /* CoverUp.entitlements */,
 				19BE9F68138A3530AED83461 /* HotkeyHandler.swift */,
 				328EB9FAC0F2EDAE70D27729 /* Info.plist */,
+				0BD65112C0F4B8C5350E8FF1 /* main.swift */,
 				084AE5A7A58B5544C52935CD /* MaskRegion.swift */,
 				B5AFE668A7AB2069E74512C2 /* MaskRegionManager.swift */,
 				65D1884172C75EA1A9586ACC /* OnboardingViewController.swift */,
@@ -265,6 +268,7 @@
 				39C4B9522BDD8B403476ABC9 /* RegionListController.swift in Sources */,
 				3FF4CE7556D64C97B48838C0 /* StatusMenuController.swift in Sources */,
 				FCC26F20C3FA242D0027C48C /* WindowTracker.swift in Sources */,
+				691B2FB0E71ADE09EACD40CB /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
