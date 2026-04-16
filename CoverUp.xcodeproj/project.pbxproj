@@ -15,7 +15,6 @@
 		1F394F5C3163F7B749CA9129 /* AppLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8CD3FA54A826728DCFC369 /* AppLogger.swift */; };
 		20066BF57DECE4F58BD469DE /* CoverUpTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C3D9136015AF20E2C7E98CB /* CoverUpTests.swift */; };
 		3721E43E389FD2A3FF6F51F6 /* OverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C15FC8242CE5643EBAD1BB /* OverlayView.swift */; };
-		39C4B9522BDD8B403476ABC9 /* RegionListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C239301D614ED4E6B71F7BD5 /* RegionListController.swift */; };
 		3FF4CE7556D64C97B48838C0 /* StatusMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4663AEB106D7DEF3D0795C /* StatusMenuController.swift */; };
 		4F636CBE32BBD3C34DB81783 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FEEDAA1DAAED4270E6739BF4 /* Assets.xcassets */; };
 		691B2FB0E71ADE09EACD40CB /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD65112C0F4B8C5350E8FF1 /* main.swift */; };
@@ -28,9 +27,9 @@
 		B6E888210B123760E670E081 /* CoverUpUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B009CC62BAC12F94797C6D8 /* CoverUpUITests.swift */; };
 		D0E8F168C2AE6E4CB7132820 /* OverlayWindowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14E98E22794061D4ACF3DC9 /* OverlayWindowTests.swift */; };
 		E9AC9CA12BE1C5326313FBA2 /* OverlayWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF3196902ECE6ECEA391FD3 /* OverlayWindow.swift */; };
+		EF94142DCFCF24B46FBF2C70 /* WindowPickerPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306EB193A0D19F95617FC506 /* WindowPickerPanel.swift */; };
 		FB18A832C12E46E5FB89B209 /* MaskRegionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AFE668A7AB2069E74512C2 /* MaskRegionManager.swift */; };
 		FCC26F20C3FA242D0027C48C /* WindowTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42287EC480133AE56389B1E /* WindowTracker.swift */; };
-		AA1234BB5678CDEF90AB1234 /* WindowPickerPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1234BB5678CDEF90AB1235 /* WindowPickerPanel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +53,7 @@
 		06C15FC8242CE5643EBAD1BB /* OverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayView.swift; sourceTree = "<group>"; };
 		084AE5A7A58B5544C52935CD /* MaskRegion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaskRegion.swift; sourceTree = "<group>"; };
 		0BD65112C0F4B8C5350E8FF1 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		306EB193A0D19F95617FC506 /* WindowPickerPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowPickerPanel.swift; sourceTree = "<group>"; };
 		328EB9FAC0F2EDAE70D27729 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		45CA4E02047251ED7705B620 /* WindowTrackerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowTrackerTests.swift; sourceTree = "<group>"; };
 		4A8CD3FA54A826728DCFC369 /* AppLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLogger.swift; sourceTree = "<group>"; };
@@ -71,7 +71,6 @@
 		9E88379ABCCC736FD5667A13 /* CoverUpUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoverUpUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9FAB2CBD4E973A91144591C /* CoverUpTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoverUpTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5AFE668A7AB2069E74512C2 /* MaskRegionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaskRegionManager.swift; sourceTree = "<group>"; };
-		C239301D614ED4E6B71F7BD5 /* RegionListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionListController.swift; sourceTree = "<group>"; };
 		C2E38414E767EB2449737894 /* IntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntegrationTests.swift; sourceTree = "<group>"; };
 		C42287EC480133AE56389B1E /* WindowTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowTracker.swift; sourceTree = "<group>"; };
 		C508800A187020D4ACA5A910 /* CoverUp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CoverUp.entitlements; sourceTree = "<group>"; };
@@ -79,7 +78,6 @@
 		E40C058FFCF307838807829F /* CoverUp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoverUp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCF3196902ECE6ECEA391FD3 /* OverlayWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayWindow.swift; sourceTree = "<group>"; };
 		FEEDAA1DAAED4270E6739BF4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		AA1234BB5678CDEF90AB1235 /* WindowPickerPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowPickerPanel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -144,10 +142,9 @@
 				FCF3196902ECE6ECEA391FD3 /* OverlayWindow.swift */,
 				7B709AEA918B5A77BB3B8608 /* PermissionManager.swift */,
 				6DC0C75E8B1BCBA880CB175F /* RegionDrawingWindowController.swift */,
-				C239301D614ED4E6B71F7BD5 /* RegionListController.swift */,
 				4C4663AEB106D7DEF3D0795C /* StatusMenuController.swift */,
+				306EB193A0D19F95617FC506 /* WindowPickerPanel.swift */,
 				C42287EC480133AE56389B1E /* WindowTracker.swift */,
-				AA1234BB5678CDEF90AB1235 /* WindowPickerPanel.swift */,
 			);
 			name = CoverUp;
 			path = Sources/CoverUp;
@@ -280,10 +277,9 @@
 				E9AC9CA12BE1C5326313FBA2 /* OverlayWindow.swift in Sources */,
 				953A77BE645A67C0EF800F20 /* PermissionManager.swift in Sources */,
 				B31A114E10574F5F2D85432B /* RegionDrawingWindowController.swift in Sources */,
-				39C4B9522BDD8B403476ABC9 /* RegionListController.swift in Sources */,
 				3FF4CE7556D64C97B48838C0 /* StatusMenuController.swift in Sources */,
+				EF94142DCFCF24B46FBF2C70 /* WindowPickerPanel.swift in Sources */,
 				FCC26F20C3FA242D0027C48C /* WindowTracker.swift in Sources */,
-				AA1234BB5678CDEF90AB1234 /* WindowPickerPanel.swift in Sources */,
 				691B2FB0E71ADE09EACD40CB /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

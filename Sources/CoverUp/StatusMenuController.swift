@@ -11,8 +11,6 @@ final class StatusMenuController: NSObject {
     // MARK: - UI
 
     private var statusItem: NSStatusItem?
-    private var controlPanel: NSPanel?
-    private var regionListController: RegionListController?
     private lazy var drawingController = RegionDrawingWindowController(manager: manager)
 
     // MARK: - Init
@@ -33,10 +31,6 @@ final class StatusMenuController: NSObject {
         statusItem?.button?.toolTip = "CoverUp"
 
         let menu = NSMenu()
-
-        let panelItem = NSMenuItem(title: "Show Control Panel", action: #selector(showControlPanel), keyEquivalent: "")
-        panelItem.target = self
-        menu.addItem(panelItem)
 
         menu.addItem(NSMenuItem.separator())
 
@@ -59,37 +53,6 @@ final class StatusMenuController: NSObject {
         menu.addItem(NSMenuItem(title: "Quit CoverUp", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
 
         statusItem?.menu = menu
-    }
-
-    // MARK: - Control Panel
-
-    @objc func showControlPanel() {
-        logInfo("StatusMenuController showControlPanel")
-        if controlPanel == nil {
-            let panel = NSPanel(
-                contentRect: NSRect(x: 0, y: 0, width: 360, height: 400),
-                styleMask: [.titled, .closable, .resizable, .utilityWindow],
-                backing: .buffered,
-                defer: false
-            )
-            panel.title = "CoverUp — Regions"
-            panel.isFloatingPanel = true
-            panel.becomesKeyOnlyIfNeeded = false
-            let overlayLevel = overlayWindow?.level.rawValue ?? NSWindow.Level.floating.rawValue
-            panel.level = NSWindow.Level(rawValue: overlayLevel + 1)
-            panel.center()
-
-            let listController = RegionListController(manager: manager)
-            panel.contentViewController = listController
-            regionListController = listController
-            controlPanel = panel
-        }
-        NSApp.activate(ignoringOtherApps: true)
-        controlPanel?.makeKeyAndOrderFront(nil)
-        DispatchQueue.main.async { [weak self] in
-            guard let panel = self?.controlPanel else { return }
-            logInfo("ControlPanel post-show — isKeyWindow=\(panel.isKeyWindow) isVisible=\(panel.isVisible) level=\(panel.level.rawValue) activationPolicy=\(NSApp.activationPolicy().rawValue) canBecomeKey=\(panel.canBecomeKey)")
-        }
     }
 
     // MARK: - Menu Actions

@@ -60,22 +60,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         statusMenuController = statusCtrl
         logInfo("StatusMenuController created — status item installed")
 
-        let args = ProcessInfo.processInfo.arguments
-        if args.contains("--add-test-region") {
-            logInfo("--add-test-region arg detected — adding uitest-region-1")
-            let region = MaskRegion(
-                id: "uitest-region-1",
-                relativeRect: CGRect(x: 100, y: 100, width: 200, height: 100)
-            )
-            manager.addRegion(region)
-        }
-        if args.contains("--open-control-panel") {
-            logInfo("--open-control-panel arg detected — will open panel in 0.5s")
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                statusCtrl.showControlPanel()
-            }
-        }
-
         logInfo("startCoreComponents complete")
     }
 
