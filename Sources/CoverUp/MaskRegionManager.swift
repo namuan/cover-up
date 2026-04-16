@@ -49,10 +49,29 @@ final class MaskRegionManager {
         regionsSubject.value[index].relativeRect = rect
     }
 
-    /// Update `targetWindowTitle` for the given id (used after the user assigns window tracking post-draw).
+    /// Attach an existing screen-space region to a tracked window while preserving its
+    /// current size and offset inside that window.
+    func attachRegionToWindow(id: String, title: String, windowRect: CGRect) {
+        guard let index = regionsSubject.value.firstIndex(where: { $0.id == id }) else { return }
+        let regionRect = regionsSubject.value[index].relativeRect
+        let localRect = CGRect(
+            x: regionRect.origin.x - windowRect.origin.x,
+            y: regionRect.origin.y - windowRect.origin.y,
+            width: regionRect.width,
+            height: regionRect.height
+        )
+        logInfo("MaskRegionManager attachRegionToWindow id=\(id) title=\(title)")
+        regionsSubject.value[index].targetWindowTitle = title
+        regionsSubject.value[index].trackedWindowLocalRect = localRect
+    }
+
+    /// Update `targetWindowTitle` for the given id.
     func updateTargetWindowTitle(id: String, title: String?) {
         guard let index = regionsSubject.value.firstIndex(where: { $0.id == id }) else { return }
         logInfo("MaskRegionManager updateTargetWindowTitle id=\(id) title=\(title ?? "nil")")
         regionsSubject.value[index].targetWindowTitle = title
+        if title == nil {
+            regionsSubject.value[index].trackedWindowLocalRect = nil
+        }
     }
 }

@@ -152,11 +152,12 @@ final class RegionDrawingView: NSView {
     private func showWindowPicker(for regionID: String, near screenRect: CGRect) {
         let picker = WindowPickerPanel()
         windowPicker = picker
-        picker.onSelect = { [weak self] title in
+        picker.onSelect = { [weak self] selection in
             guard let self else { return }
             self.windowPicker = nil
-            if let title {
-                self.manager?.updateTargetWindowTitle(id: regionID, title: title)
+            if let selection {
+                let windowRect = WindowTracker.convertToAppKit(cgWindowBounds: selection.cgBounds)
+                self.manager?.attachRegionToWindow(id: regionID, title: selection.title, windowRect: windowRect)
             }
             // Restore key focus to the drawing overlay
             self.window?.makeKeyAndOrderFront(nil)

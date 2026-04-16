@@ -61,8 +61,19 @@ final class WindowTracker {
             }
 
             if let windowBounds = findWindowBounds(title: title, in: windowInfoList) {
-                let converted = convertToAppKit(cgWindowBounds: windowBounds)
-                manager.updateRect(id: region.id, rect: converted)
+                let convertedWindowRect = convertToAppKit(cgWindowBounds: windowBounds)
+                let trackedRect: CGRect
+                if let localRect = region.trackedWindowLocalRect {
+                    trackedRect = CGRect(
+                        x: convertedWindowRect.origin.x + localRect.origin.x,
+                        y: convertedWindowRect.origin.y + localRect.origin.y,
+                        width: localRect.width,
+                        height: localRect.height
+                    )
+                } else {
+                    trackedRect = convertedWindowRect
+                }
+                manager.updateRect(id: region.id, rect: trackedRect)
             }
         }
 
@@ -96,12 +107,16 @@ final class WindowTracker {
     ///
     /// CGWindowListCopyWindowInfo already returns logical points (not pixels),
     /// so no backing-scale-factor division is needed here.
-    func convertToAppKit(cgWindowBounds rect: CGRect) -> CGRect {
+    static func convertToAppKit(cgWindowBounds rect: CGRect) -> CGRect {
         // CGWindow y=0 is at the TOP of the primary screen.
         // AppKit y=0 is at the BOTTOM of the primary screen.
         guard let primaryScreen = NSScreen.screens.first else { return rect }
         let screenHeight = primaryScreen.frame.height
         let appKitY = screenHeight - rect.origin.y - rect.height
         return CGRect(x: rect.origin.x, y: appKitY, width: rect.width, height: rect.height)
+    }
+
+    func convertToAppKit(cgWindowBounds rect: CGRect) -> CGRect {
+        Self.convertToAppKit(cgWindowBounds: rect)
     }
 }

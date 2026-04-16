@@ -95,12 +95,26 @@ final class MaskRegionManagerTests: XCTestCase {
         XCTAssertEqual(manager.regions.first?.relativeRect, newRect)
     }
 
+    func testAttachRegionToWindowPreservesLocalOffsetAndSize() {
+        let region = MaskRegion(id: "r1", relativeRect: CGRect(x: 140, y: 260, width: 80, height: 40))
+        manager.addRegion(region)
+
+        let windowRect = CGRect(x: 100, y: 200, width: 400, height: 300)
+        manager.attachRegionToWindow(id: "r1", title: "Notes", windowRect: windowRect)
+
+        let updated = try! XCTUnwrap(manager.regions.first)
+        XCTAssertEqual(updated.targetWindowTitle, "Notes")
+        XCTAssertEqual(updated.trackedWindowLocalRect, CGRect(x: 40, y: 60, width: 80, height: 40))
+        XCTAssertEqual(updated.relativeRect, region.relativeRect)
+    }
+
     // MARK: - MaskRegion struct
 
     func testMaskRegionDefaultValues() {
         let region = MaskRegion()
         XCTAssertFalse(region.id.isEmpty)
         XCTAssertNil(region.targetWindowTitle)
+        XCTAssertNil(region.trackedWindowLocalRect)
         XCTAssertEqual(region.relativeRect, .zero)
         XCTAssertFalse(region.useBlur)
         XCTAssertTrue(region.isActive)

@@ -110,6 +110,32 @@ final class WindowTrackerTests: XCTestCase {
         XCTAssertEqual(updatedRect.height, 200)
     }
 
+    func testTrackedSubregionPreservesOffsetAndSize() {
+        let region = MaskRegion(
+            id: "tracked-subregion",
+            targetWindowTitle: "TestApp",
+            trackedWindowLocalRect: CGRect(x: 25, y: 30, width: 120, height: 45),
+            relativeRect: .zero
+        )
+        manager.addRegion(region)
+
+        let screenHeight = NSScreen.screens.first?.frame.height ?? 800.0
+        mockProvider.setWindow(name: "TestApp", x: 50, y: 100, width: 300, height: 200)
+
+        let exp = expectation(description: "onUpdate fires")
+        tracker.onUpdate = { exp.fulfill() }
+        tracker.start()
+        wait(for: [exp], timeout: 1.0)
+        tracker.stop()
+
+        let updatedRect = manager.regions.first!.relativeRect
+        let expectedWindowY = screenHeight - 100 - 200
+        XCTAssertEqual(updatedRect.origin.x, 75)
+        XCTAssertEqual(updatedRect.origin.y, expectedWindowY + 30)
+        XCTAssertEqual(updatedRect.width, 120)
+        XCTAssertEqual(updatedRect.height, 45)
+    }
+
     // MARK: - Case-insensitive matching
 
     func testCaseInsensitiveWindowMatch() {

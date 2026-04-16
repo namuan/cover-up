@@ -6,18 +6,23 @@ import Foundation
 /// After the user picks or dismisses, `onSelect` is called: `nil` = keep static, non-nil = window title to track.
 final class WindowPickerPanel: NSObject, NSTableViewDataSource, NSTableViewDelegate {
 
-    var onSelect: ((String?) -> Void)?
+    struct WindowSelection {
+        let title: String
+        let cgBounds: CGRect
+    }
+
+    var onSelect: ((WindowSelection?) -> Void)?
 
     private var panel: NSPanel?
     private weak var tableView: NSTableView?
-    private var windowTitles: [String] = []
+    private var windowSelections: [WindowSelection] = []
     private var displayTitles: [String] = []
 
     // MARK: - Show / Dismiss
 
     func show(near screenRect: CGRect) {
-        let (titles, displays) = fetchWindowTitles()
-        windowTitles = titles
+        let (selections, displays) = fetchWindowTitles()
+        windowSelections = selections
         displayTitles = displays
 
         let panelWidth: CGFloat = 380
@@ -48,7 +53,7 @@ final class WindowPickerPanel: NSObject, NSTableViewDataSource, NSTableViewDeleg
         buildContent(in: p)
         panel = p
         p.makeKeyAndOrderFront(nil)
-        logInfo("WindowPickerPanel shown — \(windowTitles.count) windows available")
+        logInfo("WindowPickerPanel shown — \(windowSelections.count) windows available")
     }
 
     func dismiss() {
@@ -122,35 +127,42 @@ final class WindowPickerPanel: NSObject, NSTableViewDataSource, NSTableViewDeleg
 
     @objc private func trackSelected() {
         let row = tableView?.selectedRow ?? -1
-        let title = (row >= 0 && row < windowTitles.count) ? windowTitles[row] : nil
-        logInfo("WindowPickerPanel — user chose title=\(title ?? "nil")")
+        let selection = (row >= 0 && row < windowSelections.count) ? windowSelections[row] : nil
+        logInfo("WindowPickerPanel — user chose title=\(selection?.title ?? "nil")")
         dismiss()
-        onSelect?(title)
+        onSelect?(selection)
     }
 
     // MARK: - Window list
 
-    private func fetchWindowTitles() -> (titles: [String], displays: [String]) {
+    private func fetchWindowTitles() -> (selections: [WindowSelection], displays: [String]) {
         let options: CGWindowListOption = [.optionOnScreenOnly, .excludeDesktopElements]
         guard let list = CGWindowListCopyWindowInfo(options, kCGNullWindowID) as? [[String: Any]] else {
             return ([], [])
         }
         let appBundleName = Bundle.main.infoDictionary?["CFBundleName"] as? String ?? "CoverUp"
         var seen = Set<String>()
-        var titles: [String] = []
+        var selections: [WindowSelection] = []
         var displays: [String] = []
         for info in list {
             guard
                 let windowName = info[kCGWindowName as String] as? String,
                 !windowName.isEmpty,
                 let ownerName = info[kCGWindowOwnerName as String] as? String,
+                let boundsDict = info[kCGWindowBounds as String] as? [String: CGFloat],
                 ownerName != appBundleName
             else { continue }
             guard seen.insert(windowName).inserted else { continue }
-            titles.append(windowName)
+            let bounds = CGRect(
+                x: boundsDict["X"] ?? 0,
+                y: boundsDict["Y"] ?? 0,
+                width: boundsDict["Width"] ?? 0,
+                height: boundsDict["Height"] ?? 0
+            )
+            selections.append(WindowSelection(title: windowName, cgBounds: bounds))
             displays.append("\(ownerName)  —  \(windowName)")
         }
-        return (titles, displays)
+        return (selections, displays)
     }
 
     // MARK: - NSTableViewDataSource
