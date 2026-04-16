@@ -74,7 +74,9 @@ final class StatusMenuController: NSObject {
             )
             panel.title = "CoverUp — Regions"
             panel.isFloatingPanel = true
-            panel.becomesKeyOnlyIfNeeded = true
+            panel.becomesKeyOnlyIfNeeded = false
+            let overlayLevel = overlayWindow?.level.rawValue ?? NSWindow.Level.floating.rawValue
+            panel.level = NSWindow.Level(rawValue: overlayLevel + 1)
             panel.center()
 
             let listController = RegionListController(manager: manager)
@@ -82,8 +84,12 @@ final class StatusMenuController: NSObject {
             regionListController = listController
             controlPanel = panel
         }
-        controlPanel?.orderFront(nil)
         NSApp.activate(ignoringOtherApps: true)
+        controlPanel?.makeKeyAndOrderFront(nil)
+        DispatchQueue.main.async { [weak self] in
+            guard let panel = self?.controlPanel else { return }
+            logInfo("ControlPanel post-show — isKeyWindow=\(panel.isKeyWindow) isVisible=\(panel.isVisible) level=\(panel.level.rawValue) activationPolicy=\(NSApp.activationPolicy().rawValue) canBecomeKey=\(panel.canBecomeKey)")
+        }
     }
 
     // MARK: - Menu Actions
