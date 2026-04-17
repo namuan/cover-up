@@ -17,6 +17,26 @@ final class MaskRegionManager {
     /// Current snapshot of all regions.
     var regions: [MaskRegion] { regionsSubject.value }
 
+    // MARK: - Default style (persisted)
+
+    private static let defaultStyleKey = "coverup.defaultStyle"
+    private let userDefaults: UserDefaults
+
+    init(userDefaults: UserDefaults = .standard) {
+        self.userDefaults = userDefaults
+    }
+
+    var defaultStyle: CoverStyle {
+        get {
+            guard let raw = userDefaults.string(forKey: Self.defaultStyleKey),
+                  let style = CoverStyle(rawValue: raw) else { return .blackBox }
+            return style
+        }
+        set {
+            userDefaults.set(newValue.rawValue, forKey: Self.defaultStyleKey)
+        }
+    }
+
     // MARK: - Mutations
 
     /// Append a new region. No-op if a region with the same `id` already exists.
@@ -47,6 +67,13 @@ final class MaskRegionManager {
     func updateRect(id: String, rect: CGRect) {
         guard let index = regionsSubject.value.firstIndex(where: { $0.id == id }) else { return }
         regionsSubject.value[index].relativeRect = rect
+    }
+
+    /// Update the cover style for the given id.
+    func setStyle(id: String, style: CoverStyle) {
+        guard let index = regionsSubject.value.firstIndex(where: { $0.id == id }) else { return }
+        logInfo("MaskRegionManager setStyle id=\(id) style=\(style.rawValue)")
+        regionsSubject.value[index].style = style
     }
 
     /// Attach an existing screen-space region to a tracked window while preserving its

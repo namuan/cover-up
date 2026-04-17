@@ -1,19 +1,25 @@
 import Foundation
 import CoreGraphics
 
-/// A single screen region to be masked (blacked out or blurred in a future phase).
+enum CoverStyle: String, Codable, CaseIterable {
+    case blackBox = "Black Box"
+    case blur = "Blur"
+
+    var toggled: CoverStyle { self == .blackBox ? .blur : .blackBox }
+}
+
+/// A single screen region to be masked.
 struct MaskRegion: Equatable, Identifiable {
     /// Unique identifier (UUID string).
     var id: String
     /// Optional window title to track. `nil` = static position.
     var targetWindowTitle: String?
     /// Optional region rect in the tracked window's local coordinates.
-    /// When present, only this sub-rectangle is moved with the window.
     var trackedWindowLocalRect: CGRect?
     /// Position and size in screen coordinates (AppKit bottom-left origin).
     var relativeRect: CGRect
-    /// `false` = solid black box (Phase 1). `true` = blur (future).
-    var useBlur: Bool
+    /// How the region is rendered.
+    var style: CoverStyle
     /// When `false`, region is not rendered.
     var isActive: Bool
 
@@ -22,14 +28,14 @@ struct MaskRegion: Equatable, Identifiable {
         targetWindowTitle: String? = nil,
         trackedWindowLocalRect: CGRect? = nil,
         relativeRect: CGRect = .zero,
-        useBlur: Bool = false,
+        style: CoverStyle = .blackBox,
         isActive: Bool = true
     ) {
         self.id = id
         self.targetWindowTitle = targetWindowTitle
         self.trackedWindowLocalRect = trackedWindowLocalRect
         self.relativeRect = relativeRect
-        self.useBlur = useBlur
+        self.style = style
         self.isActive = isActive
     }
 }

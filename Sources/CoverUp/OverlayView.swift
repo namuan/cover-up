@@ -1,7 +1,7 @@
 import AppKit
 import Combine
 
-/// Renders all active MaskRegion rectangles as black boxes.
+/// Renders all active MaskRegion rectangles as black boxes or blur overlays.
 class OverlayView: NSView {
 
     // MARK: - Dependencies
@@ -13,6 +13,8 @@ class OverlayView: NSView {
 
     private var cancellables = Set<AnyCancellable>()
     private var _markedForRedraw = false
+    private var blurViews: [String: NSVisualEffectView] = [:]
+    private var cachedBlurIDs: Set<String> = []
 
     // MARK: - needsDisplay override
     //
@@ -35,10 +37,37 @@ class OverlayView: NSView {
         cancellables.removeAll()
         manager?.regionsPublisher
             .receive(on: DispatchQueue.main)
-            .sink { [weak self] _ in
+            .sink { [weak self] regions in
+                self?.syncBlurViews(for: regions)
                 self?.needsDisplay = true
             }
             .store(in: &cancellables)
+    }
+
+    // MARK: - Blur view management
+
+    private func syncBlurViews(for regions: [MaskRegion]) {
+        let activeBlurIDs = Set(regions.lazy.filter { $0.isActive && $0.style == .blur }.map { $0.id })
+
+        if activeBlurIDs != cachedBlurIDs {
+            cachedBlurIDs = activeBlurIDs
+            for id in blurViews.keys where !activeBlurIDs.contains(id) {
+                blurViews.removeValue(forKey: id)?.removeFromSuperview()
+            }
+            for region in regions where region.isActive && region.style == .blur && blurViews[region.id] == nil {
+                let vev = NSVisualEffectView(frame: region.relativeRect)
+                vev.blendingMode = .behindWindow
+                vev.material = .hudWindow
+                vev.state = .active
+                addSubview(vev)
+                blurViews[region.id] = vev
+            }
+        }
+
+        // Always reposition (handles window tracking at 30 FPS)
+        for region in regions where region.isActive && region.style == .blur {
+            blurViews[region.id]?.frame = region.relativeRect
+        }
     }
 
     // MARK: - Drawing
@@ -47,14 +76,13 @@ class OverlayView: NSView {
 
     override func draw(_ dirtyRect: NSRect) {
         _markedForRedraw = false
-        // Clear to transparent
         NSColor.clear.setFill()
         dirtyRect.fill()
 
         guard let regions = manager?.regions else { return }
 
         NSColor.black.setFill()
-        for region in regions where region.isActive && !region.useBlur {
+        for region in regions where region.isActive && region.style == .blackBox {
             region.relativeRect.fill()
         }
     }

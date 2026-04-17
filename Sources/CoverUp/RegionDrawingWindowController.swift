@@ -142,7 +142,7 @@ final class RegionDrawingView: NSView {
             width: rect.width,
             height: rect.height
         )
-        let region = MaskRegion(relativeRect: screenRect)
+        let region = MaskRegion(relativeRect: screenRect, style: manager?.defaultStyle ?? .blackBox)
         manager?.addRegion(region)
         logInfo("RegionDrawingView added region rect=\(screenRect)")
         showWindowPicker(for: region.id, near: screenRect)
@@ -247,7 +247,12 @@ final class RegionDrawingView: NSView {
         let rect = viewRect(for: region)
         let isSelected = region.id == selectedID
 
-        NSColor.black.setFill()
+        switch region.style {
+        case .blackBox:
+            NSColor.black.setFill()
+        case .blur:
+            NSColor(white: 0.5, alpha: 0.55).setFill()
+        }
         rect.fill()
 
         let borderColor: NSColor = isSelected ? .systemRed : NSColor(white: 1, alpha: 0.5)
@@ -257,53 +262,57 @@ final class RegionDrawingView: NSView {
         border.stroke()
 
         if isSelected {
-            let hint = "Delete to remove"
-            let hintAttrs: [NSAttributedString.Key: Any] = [
-                .foregroundColor: NSColor.white,
+            let hintText = "Delete to remove"
+            let hintSize = NSAttributedString(string: hintText, attributes: [
                 .font: NSFont.systemFont(ofSize: 11)
-            ]
-            let hintStr = NSAttributedString(string: hint, attributes: hintAttrs)
-            let hintSize = hintStr.size()
-            let hintOrigin = NSPoint(
-                x: rect.midX - hintSize.width / 2,
-                y: rect.midY - hintSize.height / 2
-            )
-            let bgRect = NSRect(
-                x: hintOrigin.x - 4, y: hintOrigin.y - 2,
-                width: hintSize.width + 8, height: hintSize.height + 4
-            )
-            NSColor(white: 0, alpha: 0.75).setFill()
-            NSBezierPath(roundedRect: bgRect, xRadius: 4, yRadius: 4).fill()
-            hintStr.draw(at: hintOrigin)
+            ]).size()
+            let hintOrigin = NSPoint(x: rect.midX - hintSize.width / 2, y: rect.midY - hintSize.height / 2)
+            drawBadge(hintText, at: hintOrigin, backgroundColor: NSColor(white: 0, alpha: 0.75),
+                      fontSize: 11, hPad: 4, cornerRadius: 4)
         }
+
+        // Style badge (bottom-right corner)
+        let styleText = region.style == .blur ? "◌ Blur" : "■ Black Box"
+        let styleTextWidth = NSAttributedString(string: styleText, attributes: [.font: NSFont.systemFont(ofSize: 10)]).size().width
+        let styleBadgeOrigin = NSPoint(x: rect.maxX - styleTextWidth - 6, y: rect.minY + 4)
+        drawBadge(styleText, at: styleBadgeOrigin, backgroundColor: NSColor(white: 0, alpha: 0.6))
 
         // Show tracking badge when a window title is assigned
         if let title = region.targetWindowTitle, !title.isEmpty {
-            let badge = "⇄ \(title)"
-            let badgeAttrs: [NSAttributedString.Key: Any] = [
-                .foregroundColor: NSColor.white,
-                .font: NSFont.systemFont(ofSize: 10)
-            ]
-            let badgeStr = NSAttributedString(string: badge, attributes: badgeAttrs)
-            let badgeSize = badgeStr.size()
-            let maxWidth = rect.width - 8
-            let clampedWidth = min(badgeSize.width, maxWidth)
-            let badgeOrigin = NSPoint(x: rect.minX + 4, y: rect.minY + 4)
-            let bgRect = NSRect(
-                x: badgeOrigin.x - 2, y: badgeOrigin.y - 2,
-                width: clampedWidth + 8, height: badgeSize.height + 4
-            )
-            NSColor(calibratedRed: 0.2, green: 0.5, blue: 1.0, alpha: 0.85).setFill()
-            NSBezierPath(roundedRect: bgRect, xRadius: 3, yRadius: 3).fill()
+            let trackOrigin = NSPoint(x: rect.minX + 4, y: rect.minY + 4)
+            drawBadge("⇄ \(title)", at: trackOrigin,
+                      backgroundColor: NSColor(calibratedRed: 0.2, green: 0.5, blue: 1.0, alpha: 0.85),
+                      maxWidth: rect.width - 8)
+        }
+    }
 
-            let clipPath = NSBezierPath(rect: NSRect(
-                x: badgeOrigin.x, y: badgeOrigin.y,
-                width: clampedWidth, height: badgeSize.height
-            ))
+    private func drawBadge(
+        _ text: String,
+        at origin: NSPoint,
+        backgroundColor: NSColor,
+        fontSize: CGFloat = 10,
+        hPad: CGFloat = 2,
+        cornerRadius: CGFloat = 3,
+        maxWidth: CGFloat? = nil
+    ) {
+        let attrs: [NSAttributedString.Key: Any] = [
+            .foregroundColor: NSColor.white,
+            .font: NSFont.systemFont(ofSize: fontSize)
+        ]
+        let str = NSAttributedString(string: text, attributes: attrs)
+        let textSize = str.size()
+        let drawWidth = maxWidth.map { min(textSize.width, $0) } ?? textSize.width
+        let bgRect = NSRect(x: origin.x - hPad, y: origin.y - 2,
+                            width: drawWidth + hPad * 2 + 4, height: textSize.height + 4)
+        backgroundColor.setFill()
+        NSBezierPath(roundedRect: bgRect, xRadius: cornerRadius, yRadius: cornerRadius).fill()
+        if let maxWidth, drawWidth < textSize.width {
             NSGraphicsContext.saveGraphicsState()
-            clipPath.setClip()
-            badgeStr.draw(at: badgeOrigin)
+            NSBezierPath(rect: NSRect(x: origin.x, y: origin.y, width: drawWidth, height: textSize.height)).setClip()
+            str.draw(at: origin)
             NSGraphicsContext.restoreGraphicsState()
+        } else {
+            str.draw(at: origin)
         }
     }
 
