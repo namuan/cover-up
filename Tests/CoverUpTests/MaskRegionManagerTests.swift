@@ -9,7 +9,7 @@ final class MaskRegionManagerTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
-        manager = MaskRegionManager()
+        manager = MaskRegionManager(userDefaults: UserDefaults(suiteName: UUID().uuidString)!)
         cancellables = []
     }
 
@@ -116,7 +116,18 @@ final class MaskRegionManagerTests: XCTestCase {
         XCTAssertNil(region.targetWindowTitle)
         XCTAssertNil(region.trackedWindowLocalRect)
         XCTAssertEqual(region.relativeRect, .zero)
-        XCTAssertFalse(region.useBlur)
+        XCTAssertEqual(region.style, .blackBox)
         XCTAssertTrue(region.isActive)
+    }
+
+    func testSetStyleUpdatesRegion() {
+        let region = MaskRegion(id: "r1", style: .blackBox)
+        manager.addRegion(region)
+        manager.setStyle(id: "r1", style: .blur)
+        XCTAssertEqual(manager.regions.first?.style, .blur)
+    }
+
+    func testDefaultStyleDefaultsToBlackBox() {
+        XCTAssertEqual(manager.defaultStyle, .blackBox)
     }
 }

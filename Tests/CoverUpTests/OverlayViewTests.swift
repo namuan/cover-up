@@ -127,26 +127,26 @@ final class OverlayViewTests: XCTestCase {
         XCTAssertTrue(view.needsDisplay, "Adding a region must mark view for redraw")
     }
 
-    func testUseBlurRegionNotDrawnAsBlack() {
+    func testBlurRegionNotDrawnAsBlack() {
         let manager = MaskRegionManager()
         let view = OverlayView(frame: .zero)
         view.manager = manager
 
-        // useBlur = true means "future blur" — not drawn as black in Phase 1
         let region = MaskRegion(
             id: "blurred",
             relativeRect: CGRect(x: 0, y: 0, width: 200, height: 200),
-            useBlur: true,
+            style: .blur,
             isActive: true
         )
         manager.addRegion(region)
 
         guard let rep = renderOffScreen(view: view, size: NSSize(width: 200, height: 200)) else { return }
 
-        // Center pixel must NOT be black — it should be transparent since blur is unimplemented
+        // Center pixel must NOT be solid black — blur regions use NSVisualEffectView, not draw()
         if let color = pixel(at: NSPoint(x: 100, y: 100), in: rep)?.usingColorSpace(.deviceRGB) {
-            XCTAssertEqual(color.alphaComponent, 0.0, accuracy: 0.05,
-                "useBlur region must not be rendered as black in Phase 1")
+            let isBlack = color.redComponent < 0.05 && color.greenComponent < 0.05
+                && color.blueComponent < 0.05 && color.alphaComponent > 0.9
+            XCTAssertFalse(isBlack, "Blur region must not be rendered as solid black")
         } else {
             XCTFail("Could not read pixel color")
         }
