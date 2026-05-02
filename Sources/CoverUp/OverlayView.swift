@@ -64,7 +64,7 @@ class OverlayView: NSView {
             }
         }
 
-        // Always reposition (handles window tracking at 30 FPS)
+        // Always reposition (handles window tracking at 60 FPS)
         for region in regions where region.isActive && region.style == .blur {
             blurViews[region.id]?.frame = region.relativeRect
         }
