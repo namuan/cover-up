@@ -1,7 +1,7 @@
 import AppKit
 import Foundation
 
-/// Polls window positions at ~30 FPS and updates MaskRegion positions in MaskRegionManager.
+/// Polls window positions at ~60 FPS and updates MaskRegion positions in MaskRegionManager.
 final class WindowTracker {
 
     // MARK: - Dependencies
@@ -28,15 +28,15 @@ final class WindowTracker {
 
     // MARK: - Lifecycle
 
-    /// Start polling at 30 FPS (~33 ms interval).
+    /// Start polling at 60 FPS (~16 ms interval).
     func start() {
         guard !isRunning else {
             logInfo("WindowTracker.start called but already running")
             return
         }
         isRunning = true
-        logInfo("WindowTracker starting 30 FPS polling")
-        timer = Timer.scheduledTimer(withTimeInterval: 1.0 / 30.0, repeats: true) { [weak self] _ in
+        logInfo("WindowTracker starting 60 FPS polling")
+        timer = Timer.scheduledTimer(withTimeInterval: 1.0 / 60.0, repeats: true) { [weak self] _ in
             self?.tick()
         }
         RunLoop.main.add(timer!, forMode: .common)

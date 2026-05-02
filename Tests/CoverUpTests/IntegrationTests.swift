@@ -100,7 +100,7 @@ final class IntegrationTests: XCTestCase {
         }
 
         let start = Date()
-        let exp = expectation(description: "90 frames (3s at 30fps)")
+        let exp = expectation(description: "90 frames (1.5s at 60fps)")
         exp.expectedFulfillmentCount = 90
         tracker.onUpdate = { exp.fulfill() }
         tracker.start()
@@ -108,7 +108,7 @@ final class IntegrationTests: XCTestCase {
         tracker.stop()
         let elapsed = Date().timeIntervalSince(start)
 
-        // 90 ticks at 30 FPS should complete in roughly 3 seconds; allow generous headroom
+        // 90 ticks at 60 FPS should complete in roughly 1.5 seconds; allow generous headroom
         XCTAssertLessThan(elapsed, 5.0, "90 ticks with 10 regions must complete in under 5 seconds")
     }
 
